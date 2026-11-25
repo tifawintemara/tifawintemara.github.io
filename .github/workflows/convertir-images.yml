@@ -1,0 +1,35 @@
+# Les outils de publication ne savent envoyer que du texte : les images sont poussées
+# encodées en base64 dans _b64/<chemin>.b64, et ce workflow les convertit en vrais fichiers.
+name: Convertir les images
+on:
+  push:
+    branches: [main]
+    paths: ['_b64/**']
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: convertir-images
+  cancel-in-progress: false
+jobs:
+  convertir:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Décoder _b64/*.b64
+        run: |
+          set -e
+          n=0
+          while IFS= read -r -d '' f; do
+            cible="${f#_b64/}"; cible="${cible%.b64}"
+            mkdir -p "$(dirname "$cible")"
+            base64 -d "$f" > "$cible"
+            git rm -q "$f"; git add "$cible"; n=$((n+1))
+          done < <(find _b64 -type f -name '*.b64' -print0)
+          echo "$n fichier(s) converti(s)"
+          [ "$n" -gt 0 ] || exit 0
+          git config user.name "tifawin-bot"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -qm "Images converties ($n fichiers)"
+          for i in 1 2 3; do git pull -q --rebase origin main && git push -q origin HEAD:main && exit 0; sleep 5; done
+          exit 1
