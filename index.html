@@ -330,6 +330,181 @@ body[data-badge=b] .price.price{color:var(--ink)}
 .follow .btn-ig:hover{background:#fff}
 @media (max-width:420px){.top{padding-inline:.8rem}.top nav{gap:.3rem}.pill{padding:.5rem .7rem}.logo i{flex:none}}
 
+:root{--muted:#6b5560}
+#produits.v-root{position:relative;background:var(--cream)}
+body.v-has-cart .wa-float{display:none!important}
+#produits .v-tools{top:var(--hdr,66px)}
+#produits .v-intro{padding-top:clamp(3rem,7vw,5rem)}
+
+.v-root{--fire:#F4977A;--tang:#FFC2A1;--sun:#FFD23F;--wine:#8E4257;--berry:#A94A60;--ink:#140B14;--cream:#FFF6E9;--wa:#25D366;--wa-dark:#128C4A;--muted:#6b5560;
+--display:"Bricolage Grotesque","Arial Black",system-ui,sans-serif;--body:"DM Sans",system-ui,sans-serif;--r:22px;--ease:cubic-bezier(.2,.8,.2,1)}
+
+
+.v-root button,.v-root input,.v-root select,#sheetDlg button,#cartDlg button,#cartDlg input{font:inherit;color:inherit}
+.v-root img,#sheetDlg img,#cartDlg img{max-width:100%;display:block}
+.v-preview-bar{background:var(--ink);color:var(--sun);font-size:.82rem;padding:.55rem 1rem;display:flex;gap:.8rem;align-items:center;justify-content:center;flex-wrap:wrap;text-align:center}
+.v-preview-bar label{display:inline-flex;gap:.4rem;align-items:center;color:#fff;cursor:pointer}
+.v-wrap{max-width:1180px;margin:0 auto;padding:0 clamp(1rem,4vw,2.5rem)}
+.v-zellige{position:absolute;inset:0;pointer-events:none;opacity:.5;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56' viewBox='0 0 56 56'%3E%3Cpath d='M28 4l6 14 14 6-14 6-6 14-6-14-14-6 14-6z' fill='none' stroke='%23F4977A' stroke-opacity='.28' stroke-width='1.2'/%3E%3C/svg%3E");-webkit-mask:linear-gradient(#000,transparent 85%);mask:linear-gradient(#000,transparent 85%)}
+.v-intro{position:relative;padding:clamp(2.2rem,6vw,4.5rem) 0 1.2rem;background:radial-gradient(120% 90% at 10% 0%,var(--tang),transparent 60%),radial-gradient(90% 80% at 100% 0%,rgba(255,210,63,.35),transparent 55%)}
+.v-kicker{display:inline-flex;gap:.5rem;align-items:center;font-weight:700;font-size:.85rem;background:rgba(255,255,255,.75);padding:.4rem .8rem;border-radius:999px;color:var(--wine)}
+.v-kicker [lang=ar]{font-size:1rem}
+
+
+.v-lead{max-width:56ch;font-size:clamp(1rem,1.6vw,1.15rem);color:#3b2a31;margin:0}
+.v-tools{position:sticky;top:0;z-index:30;background:rgba(255,246,233,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(142,66,87,.12);padding:.7rem 0}
+.v-search{position:relative;display:flex;gap:.6rem;align-items:center}
+.v-search input{flex:1;min-width:0;border:2px solid rgba(142,66,87,.2);background:#fff;border-radius:999px;padding:.75rem 1rem .75rem 2.6rem;font-size:1rem;outline:none;transition:border-color .2s}
+.v-search input:focus{border-color:var(--fire)}
+.v-search svg{position:absolute;left:.95rem;width:1.15rem;height:1.15rem;fill:var(--muted)}
+.v-search select{border:2px solid rgba(142,66,87,.2);background:#fff;border-radius:999px;padding:.72rem .9rem;font-weight:600}
+.v-rayons,.v-prices{display:flex;gap:.5rem;overflow-x:auto;scrollbar-width:none;padding:.65rem 0 .1rem;-webkit-overflow-scrolling:touch}
+.v-rayons::-webkit-scrollbar,.v-prices::-webkit-scrollbar{display:none}
+.v-chip{flex:none;display:inline-flex;align-items:center;gap:.4rem;border:0;cursor:pointer;border-radius:999px;padding:.55rem .9rem;font-weight:700;font-size:.9rem;background:#fff;box-shadow:inset 0 0 0 1.5px rgba(142,66,87,.18);transition:transform .2s var(--ease),background .2s,box-shadow .2s;min-height:44px}
+.v-chip .v-ic{font-size:1.15rem}.v-chip .v-n{font-size:.75rem;opacity:.6;font-weight:600}
+.v-chip[aria-pressed=true]{background:var(--c,var(--ink));color:var(--ink);box-shadow:0 6px 16px rgba(20,11,20,.15)}
+.v-chip.v-all[aria-pressed=true]{--c:var(--ink);color:var(--sun)}
+.v-prices .v-chip{min-height:38px;padding:.4rem .8rem;font-size:.82rem}
+.v-status{font-size:.9rem;color:var(--muted);margin:1rem 0 .4rem;min-height:1.3em}
+.v-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(46%,230px),1fr));gap:clamp(.7rem,2vw,1.4rem);padding-bottom:7rem}
+.v-card{position:relative;background:#fff;border-radius:var(--r);overflow:hidden;box-shadow:0 10px 28px rgba(142,66,87,.12);display:flex;flex-direction:column;transition:transform .35s var(--ease),box-shadow .35s;animation:in .45s var(--ease) both}
+.v-card:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(142,66,87,.2)}
+@keyframes in{from{opacity:0;transform:translateY(14px)}}
+.v-card .v-ph{position:relative;aspect-ratio:4/5;background:var(--c,#f3ece4);border:0;padding:0;cursor:zoom-in;overflow:hidden}
+.v-card .v-ph img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+.v-card:hover .v-ph img{transform:scale(1.05)}
+.v-star{position:absolute;right:.55rem;top:.55rem;width:4.1rem;height:4.1rem;display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:1.15rem;line-height:1;color:var(--ink);text-align:center}
+.v-star::before{content:"";position:absolute;inset:0;background:var(--sun);clip-path:polygon(50% 0,61% 20%,82% 12%,80% 35%,100% 43%,85% 60%,96% 80%,73% 82%,65% 100%,50% 87%,35% 100%,27% 82%,4% 80%,15% 60%,0 43%,20% 35%,18% 12%,39% 20%);filter:drop-shadow(0 4px 6px rgba(0,0,0,.2));z-index:-1}
+.v-star small{display:block;font-size:.6rem;font-family:var(--body);font-weight:700}
+.v-star{isolation:isolate}
+.v-flag{position:absolute;left:.55rem;top:.6rem;font-size:.7rem;font-weight:800;padding:.3rem .55rem;border-radius:999px;background:rgba(20,11,20,.75);color:#fff}
+.v-flag.draft{background:#fff;color:var(--berry);box-shadow:inset 0 0 0 1.5px var(--berry)}
+.v-flag.illu{top:auto;bottom:.6rem;background:rgba(20,11,20,.55)}
+.v-card .v-bd{padding:.75rem .85rem .9rem;display:flex;flex-direction:column;gap:.35rem;flex:1}
+.v-card .v-ray{font-size:.75rem;font-weight:700;color:var(--muted)}
+.v-card h3{font-family:var(--display);font-size:clamp(.98rem,1.6vw,1.12rem);line-height:1.12;margin:0;letter-spacing:-.01em}
+.v-card .v-act{margin-top:auto;padding-top:.5rem}
+.v-add{width:100%;min-height:44px;border:0;border-radius:999px;background:var(--ink);color:var(--sun);font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:.4rem;transition:transform .15s,background .2s}
+.v-add:active{transform:scale(.96)}
+.v-step{display:flex;align-items:center;justify-content:space-between;background:var(--cream);border-radius:999px;padding:.2rem;min-height:44px}
+.v-step button{width:40px;height:40px;border-radius:50%;border:0;background:#fff;font-size:1.25rem;font-weight:800;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.08)}
+.v-step output{font-weight:800;min-width:2ch;text-align:center}
+.v-empty{grid-column:1/-1;text-align:center;padding:3rem 1rem;color:var(--muted)}
+.v-empty button{margin-top:.8rem}
+/* sheet */
+#sheetDlg,#cartDlg{border:0;padding:0;background:transparent;max-width:none;max-height:none;width:100%;height:100%}
+#sheetDlg::backdrop,#cartDlg::backdrop{background:rgba(20,11,20,.6);backdrop-filter:blur(3px)}
+.v-sheet{position:fixed;inset:auto 0 0 0;max-height:92vh;overflow:auto;background:#fff;border-radius:26px 26px 0 0;animation:up .35s var(--ease)}
+@keyframes up{from{transform:translateY(40px);opacity:.4}}
+@media (min-width:860px){.v-sheet{inset:50% auto auto 50%;transform:translate(-50%,-50%);width:min(940px,92vw);border-radius:28px;display:grid;grid-template-columns:1.05fr 1fr;animation:pop .3s var(--ease)}@keyframes pop{from{opacity:0;transform:translate(-50%,-46%)}}}
+.v-sheet .v-x{position:absolute;right:.8rem;top:.8rem;z-index:3;width:44px;height:44px;border-radius:50%;border:0;background:rgba(255,255,255,.92);font-size:1.5rem;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.15)}
+.v-zoom{position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--c,#f3ece4);cursor:zoom-in;touch-action:pan-y}
+@media (max-width:859px){.v-zoom{max-height:56vh;aspect-ratio:auto;height:56vh}}
+.v-zoom img{width:100%;height:100%;object-fit:cover;transition:transform .35s var(--ease);transform-origin:var(--ox,50%) var(--oy,50%)}
+.v-zoom.v-on{cursor:zoom-out}.v-zoom.v-on img{transform:scale(2.2)}
+.v-zoom .v-hintz{position:absolute;left:.7rem;bottom:.7rem;font-size:.75rem;font-weight:700;background:rgba(255,255,255,.9);padding:.35rem .6rem;border-radius:999px}
+.v-views{position:absolute;right:.7rem;bottom:.7rem;display:flex;gap:.35rem}
+.v-views button{border:0;border-radius:999px;padding:.4rem .7rem;font-size:.75rem;font-weight:800;background:rgba(255,255,255,.85);cursor:pointer}
+.v-views button[aria-pressed=true]{background:var(--ink);color:var(--sun)}
+.v-sbody{padding:1.3rem clamp(1.1rem,3vw,2rem) 1.6rem;display:flex;flex-direction:column;gap:.7rem}
+.v-sbody h2{font-family:var(--display);font-size:clamp(1.5rem,3vw,2.1rem);line-height:1.05;margin:.1rem 0 0;letter-spacing:-.02em}
+.v-sbody .v-pr{font-family:var(--display);font-size:2rem;font-weight:800;color:#D9603F}
+.v-sbody .v-pr small{font-size:1rem}
+.v-sbody p{margin:0;color:#3b2a31}
+.v-note{font-size:.8rem;color:var(--muted)}
+.v-row{display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.v-row .v-step{flex:0 0 150px}
+.v-btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;min-height:48px;padding:.75rem 1.2rem;border-radius:999px;border:0;font-weight:800;cursor:pointer;text-decoration:none}
+.v-btn.v-dark{background:var(--ink);color:var(--sun)}
+.v-btn.v-wa{background:var(--wa);color:#04210F}
+.v-btn.v-ghost{background:transparent;box-shadow:inset 0 0 0 2px rgba(142,66,87,.3)}
+.v-btn svg{width:1.3rem;height:1.3rem;fill:currentColor}
+/* cart bar + siniya */
+.v-bar{position:fixed;left:50%;bottom:max(.8rem,env(safe-area-inset-bottom));transform:translate(-50%,160%);z-index:40;width:min(640px,calc(100% - 1.4rem));background:var(--ink);color:#fff;border-radius:999px;display:flex;align-items:center;gap:.7rem;padding:.45rem .45rem .45rem 1rem;box-shadow:0 18px 40px rgba(20,11,20,.35);transition:transform .45s var(--ease)}
+.v-bar.v-show{transform:translate(-50%,0)}
+.v-bar .v-open{flex:1;display:flex;align-items:center;gap:.6rem;background:none;border:0;color:#fff;cursor:pointer;text-align:left;min-height:44px}
+.v-bar .v-bk{position:relative;font-size:1.5rem}
+.v-bar .v-cnt{position:absolute;top:-6px;right:-10px;background:var(--sun);color:var(--ink);font-size:.7rem;font-weight:800;border-radius:999px;padding:.05rem .4rem}
+.v-bar .v-bump{animation:bump .45s var(--ease)}@keyframes bump{40%{transform:scale(1.35)}}
+.v-bar .v-tot{font-weight:800}.v-bar .v-tot small{display:block;font-weight:500;font-size:.75rem;opacity:.75}
+.v-cart{position:fixed;inset:auto 0 0 0;max-height:90vh;overflow:auto;background:var(--cream);border-radius:26px 26px 0 0;padding:1.1rem clamp(1rem,4vw,2rem) 1.4rem;animation:up .35s var(--ease)}
+@media (min-width:860px){.v-cart{inset:0 0 0 auto;width:440px;max-height:none;border-radius:28px 0 0 28px;animation:side .35s var(--ease)}@keyframes side{from{transform:translateX(40px);opacity:.4}}}
+.v-cart h2{font-family:var(--display);margin:.2rem 0 .2rem;font-size:1.6rem}
+.v-siniya{position:relative;margin:.8rem auto 1rem;width:min(260px,70vw);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 50% 45%,#fff8ec 0 52%,#e8c98a 53% 56%,#f7e3b8 57% 66%,#d9b26a 67% 69%,transparent 70%);filter:drop-shadow(0 14px 22px rgba(142,66,87,.25))}
+.v-siniya img{position:absolute;width:26%;aspect-ratio:1;object-fit:cover;border-radius:50%;border:3px solid #fff;box-shadow:0 4px 10px rgba(0,0,0,.2);transform:translate(-50%,-50%);animation:drop .5s var(--ease) both}
+@keyframes drop{from{opacity:0;transform:translate(-50%,-90%) scale(.6)}}
+.v-siniya .v-mid{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--display);font-weight:800;color:var(--wine);font-size:1.05rem;text-align:center;pointer-events:none}
+.v-lines{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.6rem}
+.v-lines li{display:grid;grid-template-columns:52px 1fr auto;gap:.7rem;align-items:center;background:#fff;border-radius:16px;padding:.5rem}
+.v-lines img{width:52px;height:52px;object-fit:cover;border-radius:12px}
+.v-lines .v-nm{font-weight:700;font-size:.92rem;line-height:1.2}
+.v-lines .v-sub{font-size:.8rem;color:var(--muted)}
+.v-lines .v-step{min-height:38px}.v-lines .v-step button{width:34px;height:34px;font-size:1.05rem}
+.v-total{display:flex;justify-content:space-between;align-items:baseline;margin:1rem 0 .6rem;font-family:var(--display);font-size:1.4rem;font-weight:800}
+.v-fields{display:grid;gap:.5rem;margin:.6rem 0 1rem}
+.v-fields input{border:2px solid rgba(142,66,87,.2);background:#fff;border-radius:14px;padding:.7rem .9rem;font-size:1rem}
+.v-fields label{font-size:.8rem;font-weight:700;color:var(--muted)}
+.v-msg{white-space:pre-wrap;font-size:.8rem;background:#fff;border-radius:14px;padding:.7rem .9rem;color:#3b2a31;border:1px dashed rgba(142,66,87,.3);margin:0 0 .8rem}
+.v-fly{position:fixed;z-index:60;width:56px;height:56px;border-radius:50%;object-fit:cover;pointer-events:none;box-shadow:0 8px 18px rgba(0,0,0,.25)}
+:focus-visible{outline:3px solid var(--wine);outline-offset:2px}
+.v-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+@media (prefers-reduced-motion: reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+/* ===== Catalogue éditorial (t370u) ===== */
+.v-grid{display:block;padding-bottom:8rem}
+.v-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(44%,232px),1fr));gap:clamp(1.1rem,2.6vw,2.2rem) clamp(.8rem,2.2vw,1.8rem)}
+.v-rayon{padding:clamp(1.6rem,4vw,3rem) 0 0}
+.v-rayon+.v-rayon{margin-top:clamp(.6rem,2vw,1.4rem)}
+.v-rhead{display:grid;grid-template-columns:auto 1fr auto;align-items:end;gap:clamp(.7rem,2vw,1.4rem);padding-bottom:clamp(.8rem,2vw,1.1rem);margin-bottom:clamp(1.1rem,2.6vw,1.8rem);border-bottom:1px solid rgba(20,11,20,.14);position:relative}
+.v-rhead::after{content:"";position:absolute;left:0;bottom:-2px;width:72px;height:3px;border-radius:3px;background:var(--c)}
+.v-num{font-family:var(--display);font-weight:800;font-size:clamp(2.4rem,6vw,4rem);line-height:.8;color:transparent;-webkit-text-stroke:1.5px var(--wine);letter-spacing:-.04em}
+.v-rhead h3{font-family:var(--display);font-size:clamp(1.35rem,3vw,2rem);line-height:1;margin:0 0 .3rem;letter-spacing:-.025em}
+.v-rhead h3 span{font-size:.8em}
+.v-rhead p{margin:0;color:var(--muted);font-size:clamp(.88rem,1.4vw,1rem)}
+.v-count{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+.v-card{background:transparent;box-shadow:none;border-radius:0;overflow:visible}
+.v-card:hover{transform:none;box-shadow:none}
+.v-frame{position:relative;border-radius:20px;padding:clamp(6px,1vw,9px);background:#fff;box-shadow:0 1px 0 rgba(20,11,20,.06),0 14px 34px -14px rgba(142,66,87,.35);transition:transform .45s var(--ease),box-shadow .45s var(--ease)}
+.v-card:hover .v-frame{transform:translateY(-5px);box-shadow:0 1px 0 rgba(20,11,20,.06),0 26px 44px -16px rgba(142,66,87,.45)}
+.v-card.is-picked .v-frame{box-shadow:0 0 0 2.5px var(--wine),0 18px 38px -14px rgba(142,66,87,.5)}
+.v-ph{display:block;width:100%;aspect-ratio:4/5;border-radius:14px;overflow:hidden;background:color-mix(in srgb,var(--c) 22%,#fff)}
+.v-ph img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+.v-card:hover .v-ph img{transform:scale(1.045)}
+.v-none{display:grid;place-items:center;align-content:center;gap:.5rem;width:100%;height:100%;font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--wine);background:repeating-linear-gradient(45deg,transparent 0 14px,rgba(142,66,87,.05) 14px 15px)}
+.v-none span{font-size:2.6rem;letter-spacing:0}
+.v-flag{position:absolute;left:auto;right:16px;top:auto;bottom:16px;font-size:.68rem;font-weight:700;letter-spacing:.04em;background:rgba(20,11,20,.6);color:#fff;padding:.3rem .55rem;border-radius:999px;backdrop-filter:blur(4px)}
+/* case à cocher */
+.v-pick{position:absolute;left:14px;top:14px;z-index:2;display:inline-flex;align-items:center;gap:.45rem;min-height:44px;padding:0 .8rem 0 .55rem;border-radius:999px;background:rgba(255,255,255,.94);box-shadow:0 4px 14px rgba(20,11,20,.14);cursor:pointer;font-size:.8rem;font-weight:800;user-select:none;-webkit-tap-highlight-color:transparent;transition:background .25s,color .25s}
+.v-pick input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.v-box{width:24px;height:24px;border-radius:8px;border:2px solid var(--wine);display:grid;place-items:center;background:#fff;transition:background .2s,transform .2s var(--ease)}
+.v-box::after{content:"";width:11px;height:6px;border:solid #fff;border-width:0 0 2.5px 2.5px;transform:rotate(-45deg) translate(1px,-1px) scale(0);transition:transform .25s var(--ease)}
+.v-pick input:checked+.v-box{background:var(--wine);transform:scale(1.06)}
+.v-pick input:checked+.v-box::after{transform:rotate(-45deg) translate(1px,-1px) scale(1)}
+.v-pick:has(input:checked){background:var(--ink);color:var(--sun)}
+.v-pick:has(input:checked) .v-box{border-color:var(--sun);background:var(--sun)}
+.v-pick:has(input:checked) .v-box::after{border-color:var(--ink)}
+.v-pick:has(input:focus-visible){outline:3px solid var(--wine);outline-offset:3px}
+.v-pick-sheet{position:relative;left:auto;top:auto;align-self:flex-start;box-shadow:inset 0 0 0 1.5px rgba(142,66,87,.3)}
+/* texte de carte */
+.v-bd{padding:.85rem .2rem 0;gap:.45rem}
+.v-bd h3{font-family:var(--display);font-weight:700;font-size:clamp(.98rem,1.5vw,1.1rem);line-height:1.15;letter-spacing:-.012em;margin:0;min-height:2.3em}
+.v-line{display:flex;align-items:baseline;gap:.5rem;margin:0}
+.v-price{font-family:var(--display);font-weight:800;font-size:clamp(1.2rem,2vw,1.4rem);letter-spacing:-.02em;color:#C4512F}
+.v-price small{font-size:.62em;font-weight:700}
+.v-dots{flex:1;border-bottom:1.5px dotted rgba(20,11,20,.22);transform:translateY(-.25em)}
+.v-kind{font-size:.66rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.v-add{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px rgba(20,11,20,.85);font-weight:700;letter-spacing:.01em;transition:background .25s,color .25s,transform .15s}
+.v-add:hover{background:var(--ink);color:var(--sun)}
+.v-status{display:flex;align-items:center;justify-content:space-between;gap:1rem;font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin:1.4rem 0 0}
+.v-uncheck{min-height:44px;border:0;border-radius:999px;padding:0 1rem;background:#fff;box-shadow:inset 0 0 0 1.5px rgba(142,66,87,.35);font-weight:800;font-size:.8rem;letter-spacing:.02em;text-transform:none;color:var(--wine);cursor:pointer}
+.v-uncheck:hover{background:var(--wine);color:#fff}
+.v-intro h1,.v-intro h2.v-h{font-family:var(--display);font-size:clamp(2.1rem,6.2vw,4.4rem);line-height:.96;letter-spacing:-.035em;margin:.9rem 0 .7rem;font-weight:800}
+.v-intro h2.v-h em{font-style:normal;color:#D9603F}
+.v-eyebrow{font-size:.72rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--wine)}
+@media (max-width:600px){.v-rhead{grid-template-columns:auto 1fr}.v-count{display:none}.v-pick{left:10px;top:10px;padding:0 .65rem 0 .45rem}.v-pick-t{font-size:.74rem}.v-flag{right:12px;bottom:12px}.v-kind{display:none}}
+@media (prefers-reduced-motion: reduce){.v-frame,.v-ph img{transition:none}}
+@media (max-width:600px){.v-prices{display:none}.v-tools{padding:.55rem 0}.v-rayons{padding-top:.5rem}.v-search input{padding-top:.65rem;padding-bottom:.65rem}}
+.v-rayon{scroll-margin-top:calc(var(--hdr,0px) + 140px)}
+
 </style>
 </head>
 <body data-badge="b">
@@ -340,8 +515,7 @@ body[data-badge=b] .price.price{color:var(--ink)}
   <a class="logo" href="#accueil"><i>T</i>Tifawin Temara</a>
   <nav aria-label="Navigation principale">
     <a class="hide-s" href="#produits">Articles</a>
-    <a class="hide-s" href="#nouveautes">Nouveautés</a>
-    <a class="hide-s" href="#boutique">En boutique</a>
+        <a class="hide-s" href="#boutique">En boutique</a>
     <a class="hide-s" href="#commander">Commander</a>
     <a class="hide-s nav-gestion" href="/gestion/">Espace gestion</a>
     <a class="ig-icon" href="https://www.instagram.com/tifawintemara/" target="_blank" rel="noopener noreferrer" aria-label="Instagram @tifawintemara (nouvel onglet)" title="@tifawintemara"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1.1.4 2.2.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1.1.4-2.2.4-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1.1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1.1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2M12 0C8.7 0 8.3 0 7.1.1 5.8.1 4.9.3 4.1.6c-.8.3-1.5.7-2.1 1.4C1.3 2.6.9 3.3.6 4.1.3 4.9.1 5.8.1 7.1 0 8.3 0 8.7 0 12s0 3.7.1 4.9c.1 1.3.3 2.2.6 2.9.3.8.7 1.5 1.4 2.1.7.7 1.3 1.1 2.1 1.4.8.3 1.6.5 2.9.6 1.2.1 1.6.1 4.9.1s3.7 0 4.9-.1c1.3-.1 2.2-.3 2.9-.6.8-.3 1.5-.7 2.1-1.4.7-.7 1.1-1.3 1.4-2.1.3-.8.5-1.6.6-2.9.1-1.2.1-1.6.1-4.9s0-3.7-.1-4.9c-.1-1.3-.3-2.2-.6-2.9-.3-.8-.7-1.5-1.4-2.1C21.4 1.3 20.7.9 19.9.6 19.1.3 18.2.1 16.9.1 15.7 0 15.3 0 12 0zm0 5.8a6.2 6.2 0 1 0 0 12.4 6.2 6.2 0 0 0 0-12.4zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.8a1.4 1.4 0 1 0 0 2.9 1.4 1.4 0 0 0 0-2.9z"/></svg></a>
@@ -383,121 +557,41 @@ body[data-badge=b] .price.price{color:var(--ink)}
     <span>Rangement malin</span><span>★</span><span>Cuisine du quotidien</span><span>★</span><span>Fabriqué au Maroc</span><span>★</span><span>Commande WhatsApp</span><span>★</span>
   </div></div>
 
-  <section class="section" id="produits" aria-labelledby="t-prod">
-    <div class="wrap">
-      <p class="eyebrow reveal">Sélection du moment</p>
-      <h2 class="h2 reveal d1" id="t-prod">Deux articles, <em>deux bons plans.</em></h2>
-      <p class="sub reveal d2">Des essentiels Lamacom, fabriqués au Maroc, à prix doux. Un clic sur le bouton vert et votre message de commande est déjà écrit.</p>
+  
 
-      <div class="products">
-        <article class="product box reveal" data-big="35" aria-labelledby="p1">
-          <div class="media"><div class="tilt-wrap"><div class="tilt" data-tilt>
-            <span class="badge">Pack de 4</span>
-            <img class="kb" src="img/boites-campagne-1000.webp" srcset="img/boites-campagne-600.webp 600w, img/boites-campagne-1000.webp 1000w" sizes="(max-width:700px) 92vw, (max-width:1100px) 46vw, 540px" loading="lazy" alt="Quatre boîtes de rangement transparentes à couvercles orange, alignées de la plus petite à la plus grande" width="1000" height="750" decoding="async">
-            <button type="button" class="real" data-real="img/reel/pack-4-boites-900.webp" data-alt="Photo réelle en boutique du pack de 4 boîtes Lamacom, couvercles orange" aria-label="Voir la photo réelle"><img src="img/reel/pack-4-boites-240.webp" alt="" width="120" height="160" loading="lazy" decoding="async"><span>Photo réelle</span></button>
-            <span class="shine"></span>
-          </div></div></div>
-          <div class="info">
-            <span class="tag">Rangement</span>
-            <h3 id="p1">Pack de 4 boîtes de rangement</h3>
-            <p>Quatre boîtes Lamacom transparentes en plastique alimentaire, avec couvercles orange, en quatre tailles qui s’emboîtent. Pour conserver les restes, ranger les placards et garder la cuisine en ordre.</p>
-            <ul class="feats"><li>4 tailles</li><li>Plastique alimentaire</li><li>Fermeture hermétique</li><li>Fabriqué au Maroc</li></ul>
-            <div class="price" aria-label="Prix : 35 dirhams"><span class="tb"><span class="n">35</span><span class="c">&nbsp;DH</span></span></div>
-            <a class="btn btn-wa btn-order" data-wa data-wa-text="Bonjour Tifawin Temara, je voudrais commander le Pack de 4 boîtes de rangement à 35 DH." href="https://wa.me/212604055855"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.47-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2-1.42.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35m-5.42 7.4h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 0 1 2.89 6.99c0 5.45-4.43 9.88-9.88 9.88m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.69 1.45h.01c6.55 0 11.89-5.34 11.89-11.89a11.82 11.82 0 0 0-3.48-8.41z"/></svg>Commander sur WhatsApp</a>
-          </div>
-        </article>
 
-        <article class="product pan reveal" data-big="45" aria-labelledby="p2">
-          <div class="media"><div class="tilt-wrap"><div class="tilt" data-tilt>
-            <span class="badge">21 cm</span>
-            <video src="media/poele.mp4" poster="img/poele-campagne-600.webp" muted loop playsinline autoplay data-autoplay-visible preload="none" aria-label="Grande poêle 21 cm rouge granite en lévitation, entourée de tomates cerises, poivrons et herbes"></video>
-            <button type="button" class="real" data-real="img/reel/poele-21cm-900.webp" data-alt="Photo réelle en boutique de la grande poêle 21 cm rouge granite, étiquette Tifawin 45 DH" aria-label="Voir la photo réelle"><img src="img/reel/poele-21cm-240.webp" alt="" width="120" height="160" loading="lazy" decoding="async"><span>Photo réelle</span></button>
-            <span class="shine"></span>
-          </div></div></div>
-          <div class="info">
-            <span class="tag">Cuisine</span>
-            <h3 id="p2">Grande poêle 21 cm, rouge granite</h3>
-            <p>Poêle Lamacom de 21 cm au revêtement effet granite rouge, avec manche noir. La taille idéale pour les œufs, les crêpes et la cuisine de tous les jours.</p>
-            <ul class="feats"><li>21 cm</li><li>Effet granite rouge</li><li>Sans PFOA</li><li>Fabriqué au Maroc</li></ul>
-            <div class="price" aria-label="Prix : 45 dirhams"><span class="tb"><span class="n">45</span><span class="c">&nbsp;DH</span></span></div>
-            <a class="btn btn-wa btn-order" data-wa data-wa-text="Bonjour Tifawin Temara, je voudrais commander la Grande poêle 21 cm rouge granite à 45 DH." href="https://wa.me/212604055855"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.47-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2-1.42.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35m-5.42 7.4h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 0 1 2.89 6.99c0 5.45-4.43 9.88-9.88 9.88m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.69 1.45h.01c6.55 0 11.89-5.34 11.89-11.89a11.82 11.82 0 0 0-3.48-8.41z"/></svg>Commander sur WhatsApp</a>
-          </div>
-        </article>
-      </div>
+<section id="produits" class="v-root" aria-labelledby="t-prod">
+<header class="v-intro"><div class="v-zellige" aria-hidden="true"></div><div class="v-wrap" style="position:relative">
+  <span class="v-kicker"><span lang="ar" dir="rtl">مرحبا</span> Bienvenue chez Tifawin Temara</span>
+  <p class="v-eyebrow">Le catalogue · 17 articles</p><h2 class="v-h" id="t-prod">Composez <em>votre panier</em>,<br>on le prépare à Témara.</h2>
+  <p class="v-lead">Choisissez un rayon, ajoutez vos articles, puis envoyez votre liste sur WhatsApp en un seul message, avec les quantités et le total déjà calculés.</p>
+</div></header>
 
-      <div class="more" id="nouveautes">
-        <p class="eyebrow reveal">Nouveautés</p>
-        <h2 class="h2 reveal d1" id="t-new">Petits prix, <em>grand effet.</em></h2>
-        <p class="sub reveal d2">Quatre nouveaux essentiels pour la cuisine et le rangement, de 15 à 20 DH.</p>
-        <div class="grid4">
-        <article class="card reveal d1" aria-labelledby="n1">
-          <div class="media"><div class="tilt" data-tilt>
-            <span class="badge">Nouveau</span>
-            <img class="kb" src="img/passoires-campagne-1000.webp" srcset="img/passoires-campagne-600.webp 600w, img/passoires-campagne-1000.webp 1000w" sizes="(max-width:700px) 92vw, (max-width:1100px) 46vw, 540px" loading="lazy" alt="Passoire rouge en plastique à tamis fin, en lévitation dans une éclaboussure d’eau avec tomates cerises, fraises, raisins et menthe" width="1000" height="750" decoding="async">
-            <button type="button" class="real" data-real="img/reel/passoires-rouges-900.webp" data-alt="Photo réelle en boutique des passoires rouges en plastique" aria-label="Voir la photo réelle"><img src="img/reel/passoires-rouges-240.webp" alt="" width="120" height="160" loading="lazy" decoding="async"><span>Photo réelle</span></button>
-            <span class="shine"></span>
-          </div></div>
-          <div class="body">
-            <span class="tag" style="align-self:flex-start;font-weight:700;font-size:.78rem;text-transform:uppercase;letter-spacing:.14em;background:rgba(255,246,233,.16);padding:.3rem .7rem;border-radius:999px;margin-bottom:.6rem">Cuisine</span>
-            <h3 id="n1">Passoires en plastique rouges</h3>
-            <p>Passoire ronde Lamacom en plastique rouge, à tamis fin et long manche avec trou pour l’accrocher. Pour égoutter, filtrer et rincer fruits et légumes.</p>
-            <ul class="feats"><li>Tamis fin</li><li>Manche à accrocher</li><li>Rouge vif</li></ul>
-            <div class="price" aria-label="Prix : 15 dirhams"><span class="tb"><span class="n">15</span><span class="c">&nbsp;DH</span></span></div>
-            <a class="btn btn-wa btn-order" data-wa data-wa-text="Bonjour Tifawin Temara, je voudrais commander : Passoires en plastique rouges à 15 DH." href="https://wa.me/212604055855"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.47-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2-1.42.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35m-5.42 7.4h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 0 1 2.89 6.99c0 5.45-4.43 9.88-9.88 9.88m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.69 1.45h.01c6.55 0 11.89-5.34 11.89-11.89a11.82 11.82 0 0 0-3.48-8.41z"/></svg>Commander sur WhatsApp</a>
-          </div>
-        </article>
-        <article class="card reveal d2" aria-labelledby="n2">
-          <div class="media"><div class="tilt" data-tilt>
-            <span class="badge">Lot de 6</span>
-            <img class="kb" src="img/fourchettes-campagne-1000.webp" srcset="img/fourchettes-campagne-600.webp 600w, img/fourchettes-campagne-1000.webp 1000w" sizes="(max-width:700px) 92vw, (max-width:1100px) 46vw, 540px" loading="lazy" alt="Grandes fourchettes en métal brillant en lévitation, entourées de pâtes, salade, tomates et concombre" width="1000" height="750" decoding="async">
-            <button type="button" class="real" data-real="img/reel/fourchettes-900.webp" data-alt="Photo réelle en boutique des grandes fourchettes Lamacom sous emballage" aria-label="Voir la photo réelle"><img src="img/reel/fourchettes-240.webp" alt="" width="120" height="160" loading="lazy" decoding="async"><span>Photo réelle</span></button>
-            <span class="shine"></span>
-          </div></div>
-          <div class="body">
-            <span class="tag" style="align-self:flex-start;font-weight:700;font-size:.78rem;text-transform:uppercase;letter-spacing:.14em;background:rgba(255,246,233,.16);padding:.3rem .7rem;border-radius:999px;margin-bottom:.6rem">Table</span>
-            <h3 id="n2">Grandes fourchettes Lamacom (lot de 6)</h3>
-            <p>Six grandes fourchettes Lamacom en métal brillant, pour la table de tous les jours et les repas en famille.</p>
-            <ul class="feats"><li>Lot de 6</li><li>Grand format</li><li>Métal brillant</li></ul>
-            <div class="price" aria-label="Prix : 20 dirhams"><span class="tb"><span class="n">20</span><span class="c">&nbsp;DH</span></span></div>
-            <a class="btn btn-wa btn-order" data-wa data-wa-text="Bonjour Tifawin Temara, je voudrais commander : Grandes fourchettes Lamacom (lot de 6) à 20 DH." href="https://wa.me/212604055855"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.47-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2-1.42.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35m-5.42 7.4h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 0 1 2.89 6.99c0 5.45-4.43 9.88-9.88 9.88m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.69 1.45h.01c6.55 0 11.89-5.34 11.89-11.89a11.82 11.82 0 0 0-3.48-8.41z"/></svg>Commander sur WhatsApp</a>
-          </div>
-        </article>
-        <article class="card reveal" aria-labelledby="n3">
-          <div class="media"><div class="tilt" data-tilt>
-            <span class="badge">À l’unité</span>
-            <img class="kb" src="img/pot-epices-campagne-1000.webp" srcset="img/pot-epices-campagne-600.webp 600w, img/pot-epices-campagne-1000.webp 1000w" sizes="(max-width:700px) 92vw, (max-width:1100px) 46vw, 540px" loading="lazy" alt="Pot à épices en verre avec couvercle beige et bande effet bois, entouré d’une explosion de poudres d’épices colorées" width="1000" height="750" decoding="async">
-            <span class="illu">Visuel illustratif</span>
-            <span class="shine"></span>
-          </div></div>
-          <div class="body">
-            <span class="tag" style="align-self:flex-start;font-weight:700;font-size:.78rem;text-transform:uppercase;letter-spacing:.14em;background:rgba(255,246,233,.16);padding:.3rem .7rem;border-radius:999px;margin-bottom:.6rem">Rangement</span>
-            <h3 id="n3">Pot à épices en verre</h3>
-            <p>Pot en verre avec couvercle beige, bande effet bois à motif grec et petite cuillère. Pour garder les épices au sec et à portée de main. Vendu à l’unité.</p>
-            <ul class="feats"><li>Verre</li><li>Couvercle beige</li><li>Petite cuillère</li></ul>
-            <div class="price" aria-label="Prix : 18 dirhams"><span class="tb"><span class="n">18</span><span class="c">&nbsp;DH</span></span></div>
-            <a class="btn btn-wa btn-order" data-wa data-wa-text="Bonjour Tifawin Temara, je voudrais commander : Pot à épices en verre (à l’unité) à 18 DH." href="https://wa.me/212604055855"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.47-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2-1.42.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35m-5.42 7.4h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 0 1 2.89 6.99c0 5.45-4.43 9.88-9.88 9.88m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.69 1.45h.01c6.55 0 11.89-5.34 11.89-11.89a11.82 11.82 0 0 0-3.48-8.41z"/></svg>Commander sur WhatsApp</a>
-          </div>
-        </article>
-        <article class="card reveal d1" aria-labelledby="n4">
-          <div class="media"><div class="tilt" data-tilt>
-            <span class="badge">Inox</span>
-            <img class="kb" src="img/rape-campagne-1000.webp" srcset="img/rape-campagne-600.webp 600w, img/rape-campagne-1000.webp 1000w" sizes="(max-width:700px) 92vw, (max-width:1100px) 46vw, 540px" loading="lazy" alt="Râpe plate en inox en lévitation, entourée de copeaux de carotte, de fromage et de rubans de courgette" width="1000" height="750" decoding="async">
-            <button type="button" class="real" data-real="img/reel/rape-inox-900.webp" data-alt="Photo réelle en boutique de la râpe inox, étiquette Tifawin 18 DH" aria-label="Voir la photo réelle"><img src="img/reel/rape-inox-240.webp" alt="" width="120" height="160" loading="lazy" decoding="async"><span>Photo réelle</span></button>
-            <span class="shine"></span>
-          </div></div>
-          <div class="body">
-            <span class="tag" style="align-self:flex-start;font-weight:700;font-size:.78rem;text-transform:uppercase;letter-spacing:.14em;background:rgba(255,246,233,.16);padding:.3rem .7rem;border-radius:999px;margin-bottom:.6rem">Cuisine</span>
-            <h3 id="n4">Râpe inox</h3>
-            <p>Râpe plate en acier inoxydable, avec plusieurs zones de râpage. Pour le fromage, les carottes, les courgettes et les zestes.</p>
-            <ul class="feats"><li>Inox</li><li>Plusieurs râpes en une</li><li>Poignée</li></ul>
-            <div class="price" aria-label="Prix : 18 dirhams"><span class="tb"><span class="n">18</span><span class="c">&nbsp;DH</span></span></div>
-            <a class="btn btn-wa btn-order" data-wa data-wa-text="Bonjour Tifawin Temara, je voudrais commander : Râpe inox à 18 DH." href="https://wa.me/212604055855"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.47-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2-1.42.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35m-5.42 7.4h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 0 1 2.89 6.99c0 5.45-4.43 9.88-9.88 9.88m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.69 1.45h.01c6.55 0 11.89-5.34 11.89-11.89a11.82 11.82 0 0 0-3.48-8.41z"/></svg>Commander sur WhatsApp</a>
-          </div>
-        </article>
-        </div>
-      </div>
-    </div>
-  </section>
+<div class="v-tools"><div class="v-wrap">
+  <div class="v-search" role="search">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 2a8 8 0 0 1 6.3 12.9l5.4 5.4-1.4 1.4-5.4-5.4A8 8 0 1 1 10 2zm0 2a6 6 0 1 0 0 12 6 6 0 0 0 0-12z"/></svg>
+    <label class="v-sr" for="q">Rechercher un article</label>
+    <input id="q" type="search" placeholder="Chercher : poêle, bols, râpe…" autocomplete="off" enterkeyhint="search">
+    <label class="v-sr" for="sort">Trier</label>
+    <select id="sort"><option value="rayon">Par rayon</option><option value="asc">Prix ↑</option><option value="desc">Prix ↓</option></select>
+  </div>
+  <div class="v-rayons" id="rayons" role="group" aria-label="Rayons"></div>
+  <div class="v-prices" id="prices" role="group" aria-label="Budget"></div>
+</div></div>
+
+<main class="v-wrap">
+  <p class="v-status" id="status" aria-live="polite"></p>
+  <div class="v-grid" id="grid"></div>
+</main>
+
+<div class="v-bar" id="bar" aria-hidden="true">
+  <button class="v-open" id="openCart" type="button" aria-label="Voir mon panier"><span class="v-bk" aria-hidden="true">🧺<span class="v-cnt" id="cnt">0</span></span><span class="v-tot" id="barTot">0 DH<small>Voir mon panier</small></span></button>
+  <a class="v-btn v-wa" id="barWa" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.05 2A9.9 9.9 0 0 0 3.6 17.1L2 22l5.03-1.6A9.9 9.9 0 1 0 12.05 2zm5.8 13.9c-.25.7-1.44 1.33-2 1.42-.51.07-1.16.1-1.87-.12-.44-.14-.99-.32-1.7-.63-2.98-1.29-4.93-4.3-5.08-4.49-.14-.2-1.21-1.61-1.21-3.07s.77-2.18 1.04-2.48c.27-.3.59-.37.79-.37h.57c.18.01.43-.07.67.51.25.59.84 2.05.92 2.2.07.15.12.32.02.52-.1.2-.15.32-.3.5l-.45.52c-.15.14-.3.3-.13.6.17.3.77 1.27 1.65 2.06 1.13 1.01 2.09 1.33 2.39 1.48.3.14.47.12.64-.08.17-.19.74-.86.94-1.16.2-.3.4-.25.67-.15.27.1 1.73.82 2.03.97.3.15.5.22.57.35.08.12.08.72-.17 1.41z"/></svg><span>Commander</span></a>
+</div>
+
+<dialog id="sheetDlg" aria-labelledby="sTitle"><div class="v-sheet" id="sheet"></div></dialog>
+<dialog id="cartDlg" aria-labelledby="cTitle"><div class="v-cart" id="cart"></div></dialog>
+</section>
 
   <section class="section boutique" id="boutique" aria-labelledby="t-bout">
     <div class="wrap">
@@ -608,6 +702,200 @@ document.documentElement.classList.add("js");
     const vio = new IntersectionObserver(es => es.forEach(e => { e.isIntersecting ? e.target.play().catch(()=>{}) : e.target.pause(); }), {threshold:.3});
     vids.forEach(v => vio.observe(v));
   }
+})();
+</script>
+<script>
+(() => {
+
+const WA = "212604055855";
+const RAYONS = [
+  {id:"rangement",nom:"Rangement",ic:"🫙",c:"#FFC2A1"},
+  {id:"cuisson",nom:"Cuisson",ic:"🍳",c:"#F4977A"},
+  {id:"ustensiles",nom:"Ustensiles",ic:"🥄",c:"#FFD23F"},
+  {id:"vaisselle",nom:"Vaisselle",ic:"🍽️",c:"#8DB3E2"},
+  {id:"epices",nom:"Épices",ic:"🌶️",c:"#E9A07F"},
+  {id:"paniers",nom:"Paniers & plateaux",ic:"🧺",c:"#7FB7A4"}];
+const L = "img/";
+// Les 17 articles réels de la gestion Tifawin (prix au 25/11/2026). Aucun article inventé.
+const P = [
+  {id:"boites",r:"rangement",nom:"Pack de 4 boîtes de rangement",prix:35,img:"img/vitrine/pack-4-boites",visuel:L+"boites-campagne-1000.webp",d:"Quatre boîtes Lamacom en plastique alimentaire, en quatre tailles qui s’emboîtent. Pour conserver les restes, ranger les placards et garder la cuisine en ordre.",k:"boite rangement conservation lamacom plastique"},
+  {id:"poele21",r:"cuisson",nom:"Grande poêle 21 cm, rouge granite",prix:45,img:"img/vitrine/poele-21cm",visuel:L+"poele-campagne-1200.webp",d:"Poêle Lamacom de 21 cm au revêtement effet granite rouge, avec manche noir. La taille idéale pour les œufs, les crêpes et la cuisine de tous les jours.",k:"poele granite rouge lamacom"},
+  {id:"poelemoy",r:"cuisson",nom:"Poêle moyenne rouge granite",prix:40,img:"img/vitrine/poele-moyenne-rouge",d:"Poêle Lamacom moyenne, revêtement effet granite rouge.",k:"poele granite rouge lamacom"},
+  {id:"poelepet",r:"cuisson",nom:"Petite poêle noire",prix:35,img:"img/vitrine/petite-poele-noire",d:"Petite poêle Lamacom noire.",k:"poele noire lamacom"},
+  {id:"passoires",r:"ustensiles",nom:"Passoires en plastique rouges",prix:15,img:"img/vitrine/passoires-rouges",visuel:L+"passoires-campagne-1000.webp",d:"Passoire ronde Lamacom en plastique rouge, à tamis fin et long manche avec trou pour l’accrocher. Pour égoutter, filtrer et rincer fruits et légumes.",k:"passoire egoutter rouge plastique"},
+  {id:"fourchettes",r:"ustensiles",nom:"Grandes fourchettes Lamacom (lot de 6)",prix:20,img:"img/vitrine/fourchettes",visuel:L+"fourchettes-campagne-1000.webp",d:"Grandes fourchettes Lamacom en métal brillant, pour la table de tous les jours et les repas en famille.",k:"fourchette couverts table"},
+  {id:"rape",r:"ustensiles",nom:"Râpe inox",prix:18,img:"img/vitrine/rape-inox",visuel:L+"rape-campagne-1000.webp",d:"Râpe plate en acier inoxydable, avec plusieurs zones de râpage. Pour le fromage, les carottes, les courgettes et les zestes.",k:"rape inox fromage carotte"},
+  {id:"gcuil",r:"ustensiles",nom:"Grandes cuillères",prix:20,img:"img/vitrine/grandes-cuilleres",d:"",k:"cuillere couverts table"},
+  {id:"pcuil",r:"ustensiles",nom:"Petites cuillères",prix:16,img:"img/vitrine/petites-cuilleres",d:"",k:"cuillere cafe the couverts"},
+  {id:"bolsbl",r:"vaisselle",nom:"Bols blancs",prix:10,img:"img/vitrine/bols-blancs",d:"",k:"bol blanc vaisselle"},
+  {id:"bolsbu",r:"vaisselle",nom:"Bols bleus",prix:10,img:"img/vitrine/bols-bleus",d:"Bols en porcelaine à motif bleu.",k:"bol bleu porcelaine vaisselle"},
+  {id:"epices",r:"epices",nom:"Pot à épices en verre",prix:18,visuel:L+"pot-epices-campagne-1000.webp",thumb:L+"pot-epices-campagne-600.webp",d:"Pot en verre avec couvercle beige, bande effet bois à motif grec et petite cuillère. Pour garder les épices au sec et à portée de main. Vendu à l’unité.",k:"pot epices verre bocal"},
+  {id:"panier",r:"paniers",nom:"Panier en corde de coton MINISO",prix:15,img:"img/vitrine/panier-miniso",d:"Panier MINISO en corde de coton tressée, avec anses.",k:"panier corde coton miniso rangement"},
+  {id:"plt1",r:"paniers",nom:"Plateau plastique T1",prix:20,d:"Plateau en plastique, taille 1.",k:"plateau plastique service"},
+  {id:"plt2",r:"paniers",nom:"Plateau plastique T2",prix:30,d:"Plateau en plastique, taille 2.",k:"plateau plastique service"},
+  {id:"plt3",r:"paniers",nom:"Plateau plastique T3",prix:35,d:"Plateau en plastique, taille 3.",k:"plateau plastique service"},
+  {id:"plt4",r:"paniers",nom:"Plateau plastique T4",prix:45,d:"Plateau en plastique, taille 4.",k:"plateau plastique service"}];
+const RDESC = {rangement:"Des boîtes qui s’emboîtent, pour une cuisine en ordre.",cuisson:"Les poêles Lamacom du quotidien, en trois tailles.",ustensiles:"Les indispensables du tiroir, à petits prix.",vaisselle:"Des bols simples pour la table de tous les jours.",epices:"Pour garder les épices au sec et à portée de main.",paniers:"Ranger, présenter, servir."};
+const PH = "data:image/svg+xml,"+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 100"><rect width="80" height="100" fill="#F7E9DA"/><path d="M40 30l5 12 12 5-12 5-5 12-5-12-12-5 12-5z" fill="none" stroke="#C98A6B" stroke-width="1.5"/></svg>');
+const BUDGETS = [{id:0,t:"Tous les prix"},{id:15,t:"≤ 15 DH"},{id:20,t:"≤ 20 DH"},{id:35,t:"≤ 35 DH"}];
+const $ = s => document.querySelector(s);
+const norm = s => s.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const st = {r:"", b:0, q:"", sort:"rayon", };
+let cart = {}; try { cart = JSON.parse(localStorage.getItem("tifawin-panier")||"{}") } catch {}
+const ray = id => RAYONS.find(r => r.id===id);
+const thumb = p => p.img ? p.img+"-400.webp" : (p.thumb || PH);
+const big = p => p.img ? p.img+"-960.webp" : (p.visuel || PH);
+const visible = () => P;
+const dh = n => n+"\u00a0DH";
+const esc = s => s.replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+function chips(){
+  const v = visible();
+  $("#rayons").innerHTML = `<button class="v-chip v-all" data-r="" aria-pressed="${!st.r}"><span class="v-ic" aria-hidden="true">✦</span>Tout<span class="v-n">${v.length}</span></button>` +
+    RAYONS.map(r => { const n = v.filter(p=>p.r===r.id).length; return n ? `<button class="v-chip" style="--c:${r.c}" data-r="${r.id}" aria-pressed="${st.r===r.id}"><span class="v-ic" aria-hidden="true">${r.ic}</span>${r.nom}<span class="v-n">${n}</span></button>` : "" }).join("");
+  $("#prices").innerHTML = BUDGETS.map(b => `<button class="v-chip" style="--c:var(--tang)" data-b="${b.id}" aria-pressed="${st.b===b.id}">${b.t}</button>`).join("");
+}
+function list(){
+  const q = norm(st.q.trim());
+  let l = visible().filter(p => (!st.r || p.r===st.r) && (!st.b || p.prix<=st.b) && (!q || norm(p.nom+" "+p.k+" "+ray(p.r).nom).includes(q)));
+  if (st.sort==="asc") l.sort((a,b)=>a.prix-b.prix); else if (st.sort==="desc") l.sort((a,b)=>b.prix-a.prix);
+  else l.sort((a,b)=>RAYONS.indexOf(ray(a.r))-RAYONS.indexOf(ray(b.r)));
+  return l;
+}
+function actHtml(p){
+  const n = cart[p.id]||0;
+  return n ? `<div class="v-step" role="group" aria-label="Quantité ${esc(p.nom)}"><button data-dec="${p.id}" aria-label="Retirer un">−</button><output aria-live="polite">${n}</output><button data-inc="${p.id}" aria-label="Ajouter un">+</button></div>`
+           : `<button class="v-add" data-inc="${p.id}">＋ Ajouter</button>`;
+}
+const photoKind = p => p.img ? "real" : p.visuel ? "illu" : "none";
+function cardHtml(p,i){
+  const r = ray(p.r), k = photoKind(p), on = !!cart[p.id];
+  return `<article class="v-card${on?" is-picked":""}" data-id="${p.id}" style="animation-delay:${Math.min(i,8)*45}ms">
+    <div class="v-frame" style="--c:${r.c}">
+      <button class="v-ph" data-open="${p.id}" aria-label="Voir la fiche : ${esc(p.nom)}">${k==="none"
+        ? `<span class="v-none" aria-hidden="true"><span>${r.ic}</span>Photo bientôt</span>`
+        : `<img src="${thumb(p)}" alt="${esc(p.nom)}${k==="real"?" (photo réelle en boutique)":" (visuel illustratif)"}" width="400" height="500" loading="${i<4?"eager":"lazy"}" decoding="async">`}</button>
+      <label class="v-pick"><input type="checkbox" data-pick="${p.id}" ${on?"checked":""}><span class="v-box" aria-hidden="true"></span><span class="v-pick-t">${on?"Choisi":"Choisir"}</span><span class="v-sr"> ${esc(p.nom)}</span></label>
+      ${k==="illu"?'<span class="v-flag">Visuel illustratif</span>':""}
+    </div>
+    <div class="v-bd"><h3>${esc(p.nom)}</h3>
+      <p class="v-line"><span class="v-price">${p.prix}<small>&nbsp;DH</small></span><span class="v-dots" aria-hidden="true"></span><span class="v-kind">${k==="real"?"Photo réelle":k==="illu"?"Illustration":"Sans photo"}</span></p>
+      <div class="v-act" id="act-${p.id}">${actHtml(p)}</div></div></article>`;
+}
+function render(){
+  chips();
+  const l = list(), grouped = st.sort==="rayon" && !st.r && !st.b && !st.q.trim();
+  const picked = Object.keys(cart).length;
+  $("#status").innerHTML = (l.length ? `<span>${l.length} article${l.length>1?"s":""}${st.r?" · "+ray(st.r).nom:""}${st.b?" · jusqu’à "+st.b+" DH":""}</span>` : "<span></span>") +
+    (picked ? `<button class="v-uncheck" id="uncheck" type="button">Tout décocher (${picked})</button>` : "");
+  if (!l.length) { $("#grid").innerHTML = `<div class="v-empty"><p>Aucun article ne correspond.</p><button class="v-btn v-ghost" id="reset">Tout afficher</button></div>`; return }
+  if (grouped) {
+    let i = 0;
+    $("#grid").innerHTML = RAYONS.map((r,ri) => { const items = l.filter(p=>p.r===r.id); if (!items.length) return "";
+      return `<section class="v-rayon" aria-labelledby="rh-${r.id}"><header class="v-rhead" style="--c:${r.c}"><span class="v-num">${String(ri+1).padStart(2,"0")}</span><div><h3 id="rh-${r.id}"><span aria-hidden="true">${r.ic}</span> ${r.nom}</h3><p>${RDESC[r.id]}</p></div><span class="v-count">${items.length} article${items.length>1?"s":""}</span></header>
+        <div class="v-cards">${items.map(p=>cardHtml(p,i++)).join("")}</div></section>` }).join("");
+  } else $("#grid").innerHTML = `<div class="v-cards">${l.map(cardHtml).join("")}</div>`;
+}
+function total(){ return Object.entries(cart).reduce((s,[id,n]) => { const p = P.find(x=>x.id===id); return p && s+p.prix*n },0) }
+function lines(){ return Object.entries(cart).map(([id,n]) => ({p:P.find(x=>x.id===id),n})).filter(x => x.p && x.n>0) }
+function message(){
+  const ls = lines(); if (!ls.length) return "Bonjour Tifawin Temara, je voudrais des informations sur vos articles.";
+  const nom = ($("#fNom")?.value||localStorage.getItem("tifawin-nom")||"").trim(), qu = ($("#fQuartier")?.value||localStorage.getItem("tifawin-quartier")||"").trim();
+  return "Salam Tifawin Temara 👋\nJe voudrais commander :\n" + ls.map(({p,n}) => `• ${n} × ${p.nom} (${p.prix} DH) = ${p.prix*n} DH`).join("\n") +
+    `\nTotal : ${total()} DH` + (nom?`\nPrénom : ${nom}`:"") + (qu?`\nQuartier : ${qu}`:"") + "\nMerci !";
+}
+const waUrl = t => "https://wa.me/"+WA+"?text="+encodeURIComponent(t);
+function syncBar(bump){
+  const n = Object.values(cart).reduce((a,b)=>a+b,0), ls = lines(), c = ls.reduce((a,x)=>a+x.n,0);
+  $("#cnt").textContent = c; $("#barTot").innerHTML = `${dh(total())}<small>${c} article${c>1?"s":""} · voir mon panier</small>`;
+  $("#barWa").href = waUrl(message());
+  const bar = $("#bar"); bar.classList.toggle("v-show", c>0); document.body.classList.toggle("v-has-cart", c>0); bar.setAttribute("aria-hidden", c>0?"false":"true");
+  if (bump && !reduce) { const b = $(".v-bar .v-bk"); b.classList.remove("v-bump"); void b.offsetWidth; b.classList.add("v-bump") }
+  localStorage.setItem("tifawin-panier", JSON.stringify(cart));
+}
+function syncPick(id){
+  const on = !!cart[id];
+  document.querySelectorAll(`[data-pick="${id}"]`).forEach(c => { c.checked = on; const t = c.parentNode.querySelector(".v-pick-t"); if (t) t.textContent = on ? "Choisi" : "Choisir" });
+  const card = document.querySelector(`.v-card[data-id="${id}"]`); if (card) card.classList.toggle("is-picked", on);
+  const u = $("#uncheck"), n = Object.keys(cart).length;
+  if (n && !u) render(); else if (u) { if (n) u.textContent = `Tout décocher (${n})`; else u.remove() }
+}
+function setQty(id, d, from){
+  cart[id] = Math.max(0, Math.min(99, (cart[id]||0)+d)); if (!cart[id]) delete cart[id];
+  const p = P.find(x=>x.id===id); const a = document.getElementById("act-"+id); if (a) a.innerHTML = actHtml(p);
+  if (d>0 && from && !reduce && $("#bar").classList.contains("v-show")) fly(from, p);
+  syncBar(d>0); syncPick(id); if ($("#cartDlg").open) drawCart(); if ($("#sheetDlg").open) { const s = $("#sQty"); if (s) s.innerHTML = actHtml(p) }
+}
+function fly(from, p){
+  const r = from.getBoundingClientRect(), t = $(".v-bar .v-bk").getBoundingClientRect();
+  const im = document.createElement("img"); im.src = thumb(p); im.className = "v-fly"; im.alt = ""; document.body.append(im);
+  im.animate([{left:r.left+r.width/2-28+"px",top:r.top-20+"px",transform:"scale(1)",opacity:1},{left:t.left-14+"px",top:t.top-14+"px",transform:"scale(.35)",opacity:.6}],{duration:650,easing:"cubic-bezier(.5,-0.2,.4,1)"}).onfinish = () => im.remove();
+}
+function openSheet(id){
+  const p = P.find(x=>x.id===id), r = ray(p.r); const both = p.img && p.visuel;
+  $("#sheet").style.setProperty("--c", r.c+"33");
+  $("#sheet").innerHTML = `<button class="v-x" data-close aria-label="Fermer">×</button>
+   <div class="v-zoom${photoKind(p)==="none"?" v-nozoom":""}" id="zoom" style="--c:${r.c}33"><img id="zImg" src="${big(p)}" alt="${esc(p.nom)}" width="960" height="1200">
+    <span class="v-hintz" aria-hidden="true">Touchez pour zoomer</span>
+    ${both?`<div class="v-views" role="group" aria-label="Type de photo"><button aria-pressed="true" data-view="${big(p)}">Photo réelle</button><button aria-pressed="false" data-view="${p.visuel}">Visuel</button></div>`:""}</div>
+   <div class="v-sbody"><span class="v-ray">${r.ic} ${r.nom}</span>
+    <h2 id="sTitle">${esc(p.nom)}</h2><div class="v-pr">${p.prix}<small>&nbsp;DH</small></div>
+    ${p.d?`<p>${esc(p.d)}</p>`:""}
+    <p class="v-note">${p.img?"Photo prise en boutique à Témara.":p.visuel?"Visuel illustratif : demandez-nous la photo réelle sur WhatsApp.":"Photo bientôt disponible : demandez-la-nous sur WhatsApp."} Disponibilité confirmée sur WhatsApp.</p>
+    <label class="v-pick v-pick-sheet"><input type="checkbox" data-pick="${p.id}" ${cart[p.id]?"checked":""}><span class="v-box" aria-hidden="true"></span><span class="v-pick-t">${cart[p.id]?"Choisi":"Choisir"}</span><span class="v-sr"> ${esc(p.nom)}</span></label>
+    <div class="v-row"><div id="sQty" style="flex:0 0 160px">${actHtml(p)}</div>
+     <a class="v-btn v-wa" target="_blank" rel="noopener noreferrer" href="${waUrl(`Salam Tifawin Temara 👋\nJe voudrais commander : ${p.nom} (${p.prix} DH).\nMerci !`)}">Commander juste celui-ci</a></div>
+   </div>`;
+  $("#sheetDlg").showModal();
+}
+function drawCart(){
+  const ls = lines(), c = ls.reduce((a,x)=>a+x.n,0);
+  const pos = ls.flatMap(x => Array(Math.min(x.n,3)).fill(x.p)).slice(0,8);
+  $("#cart").innerHTML = `<button class="v-btn v-ghost" data-close style="float:right;min-height:40px;padding:.4rem .9rem">Fermer</button>
+   <h2 id="cTitle">Votre siniya</h2><p class="v-note" style="margin:0">${c?`${c} article${c>1?"s":""} prêts à être commandés.`:"Votre panier est vide."}</p>
+   <div class="v-siniya" aria-hidden="true">${pos.map((p,i) => { const a = (i/Math.max(pos.length,1))*2*Math.PI - Math.PI/2, rr = pos.length>1?30:0; return `<img src="${thumb(p)}" alt="" style="left:${50+rr*Math.cos(a)}%;top:${50+rr*Math.sin(a)}%;animation-delay:${i*50}ms">` }).join("")}<span class="v-mid">${c?dh(total()):"تيفاوين"}</span></div>
+   <ul class="v-lines">${ls.map(({p,n}) => `<li><img src="${thumb(p)}" alt=""><div><div class="v-nm">${esc(p.nom)}</div><div class="v-sub">${p.prix} DH × ${n} = <b>${p.prix*n} DH</b></div></div>
+     <div class="v-step" role="group" aria-label="Quantité ${esc(p.nom)}"><button data-dec="${p.id}" aria-label="Retirer un">−</button><output>${n}</output><button data-inc="${p.id}" aria-label="Ajouter un">+</button></div></li>`).join("")}</ul>
+   ${c?`<div class="v-total"><span>Total</span><span>${dh(total())}</span></div>
+   <div class="v-fields"><label for="fNom">Prénom (facultatif)</label><input id="fNom" autocomplete="given-name" value="${esc(localStorage.getItem("tifawin-nom")||"")}">
+    <label for="fQuartier">Quartier à Témara (facultatif)</label><input id="fQuartier" value="${esc(localStorage.getItem("tifawin-quartier")||"")}"></div>
+   <p class="v-note" style="margin-bottom:.4rem">Message qui sera envoyé :</p><pre class="v-msg" id="msg"></pre>
+   <a class="v-btn v-wa" id="cartWa" style="width:100%" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.05 2A9.9 9.9 0 0 0 3.6 17.1L2 22l5.03-1.6A9.9 9.9 0 1 0 12.05 2z"/></svg>Envoyer ma commande sur WhatsApp</a>
+   <p class="v-note" style="text-align:center;margin-top:.6rem">Rien n’est payé en ligne : on vous répond sur WhatsApp pour confirmer et organiser la remise.</p>
+   <button class="v-btn v-ghost" id="vider" style="width:100%;margin-top:.4rem">Tout décocher</button>`:`<button class="v-btn v-dark" data-close style="width:100%">Choisir des articles</button>`}`;
+  updMsg();
+}
+function updMsg(){ const m = $("#msg"); if (!m) return; const t = message(); m.textContent = t; $("#cartWa").href = waUrl(t); $("#barWa").href = waUrl(t) }
+
+document.addEventListener("click", e => {
+  const t = e.target.closest("button,a"); if (!t) return;
+  if (t.dataset.r !== undefined) { st.r = t.dataset.r; render() }
+  else if (t.dataset.b !== undefined) { st.b = +t.dataset.b; render() }
+  else if (t.dataset.inc) setQty(t.dataset.inc, 1, t);
+  else if (t.dataset.dec) setQty(t.dataset.dec, -1);
+  else if (t.dataset.open) openSheet(t.dataset.open);
+  else if (t.dataset.view) { $("#zImg").src = t.dataset.view; t.parentNode.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", b===t)) ; $("#zoom").classList.remove("v-on") }
+  else if (t.hasAttribute("data-close")) t.closest("dialog").close();
+  else if (t.id==="openCart") { drawCart(); $("#cartDlg").showModal() }
+  else if (t.id==="reset") { st.r=""; st.b=0; st.q=""; $("#q").value=""; render() }
+  else if (t.id==="vider" || t.id==="uncheck") { cart = {}; document.querySelectorAll("[data-pick]").forEach(c => c.checked = false); syncBar(); if ($("#cartDlg").open) drawCart(); render() }
+});
+document.addEventListener("click", e => { const z = e.target.closest("#zoom"); if (!z || z.classList.contains("v-nozoom") || e.target.closest(".v-views")) return;
+  const r = z.getBoundingClientRect(); z.style.setProperty("--ox", (e.clientX-r.left)/r.width*100+"%"); z.style.setProperty("--oy", (e.clientY-r.top)/r.height*100+"%"); z.classList.toggle("v-on") });
+document.addEventListener("pointermove", e => { const z = e.target.closest?.("#zoom.v-on"); if (!z || e.pointerType!=="mouse") return; const r = z.getBoundingClientRect(); z.style.setProperty("--ox", (e.clientX-r.left)/r.width*100+"%"); z.style.setProperty("--oy", (e.clientY-r.top)/r.height*100+"%") });
+document.addEventListener("change", e => { const id = e.target.dataset?.pick; if (!id) return;
+  if (e.target.checked) { if (!cart[id]) setQty(id, 1, e.target.closest(".v-card")||null) } else { delete cart[id]; setQty(id, 0) } });
+document.addEventListener("input", e => {
+  if (e.target.id==="q") { st.q = e.target.value; if (st.q.trim()) { st.r = ""; st.b = 0 } render() }
+  if (e.target.id==="fNom") { localStorage.setItem("tifawin-nom", e.target.value); updMsg() }
+  if (e.target.id==="fQuartier") { localStorage.setItem("tifawin-quartier", e.target.value); updMsg() }
+});
+$("#sort").addEventListener("change", e => { st.sort = e.target.value; render() });
+document.querySelectorAll("#vitrine dialog").forEach(d => d.addEventListener("click", e => { if (e.target===d) d.close() }));
+const hd=document.getElementById("top"); const setH=()=>document.documentElement.style.setProperty("--hdr",(hd?hd.offsetHeight:66)+"px"); setH(); addEventListener("resize",setH,{passive:true});
+render(); syncBar();
+
 })();
 </script>
 </body>
