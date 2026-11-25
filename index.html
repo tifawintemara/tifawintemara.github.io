@@ -266,9 +266,33 @@ footer small{display:block;margin-top:.4rem;font-size:.8rem;opacity:.8}
   .js .reveal{opacity:1;transform:none}
   .wa-float::before,.wa-float::after{display:none}
 }
+/* Étiquettes de prix · sticker étoilé zellige */
+.price .tb{display:contents}
+body[data-badge] .price{white-space:nowrap}
+body[data-badge] .price .tb{display:inline-flex;align-items:baseline;position:relative;white-space:nowrap}
+body[data-badge] .price .n{font-size:1em}
+body[data-badge] .price .c{font-size:.5em;letter-spacing:.02em}
+/* ---------- B · Sticker étoilé zellige ---------- */
+body[data-badge=b] .price{display:inline-block;font-size:clamp(1.7rem,4vw,2.3rem);margin:1rem 0 1.2rem;line-height:1;letter-spacing:-.02em;color:var(--ink);rotate:-9deg;transition:rotate .7s var(--ease),scale .4s var(--ease);
+  filter:drop-shadow(0 8px 12px rgba(60,20,10,.25))}
+body[data-badge=b] .price .tb{justify-content:center;align-items:center;width:3.35em;aspect-ratio:1;
+  background:radial-gradient(circle at 50% 50%,#FFD23F 0 55%,transparent 56%),repeating-conic-gradient(from 11.25deg,#FFD23F 0 11.25deg,#FFC21F 11.25deg 22.5deg);
+  clip-path:polygon(50.00% 0.00%,58.39% 7.83%,69.13% 3.81%,73.89% 14.25%,85.36% 14.64%,85.75% 26.11%,96.19% 30.87%,92.17% 41.61%,100.00% 50.00%,92.17% 58.39%,96.19% 69.13%,85.75% 73.89%,85.36% 85.36%,73.89% 85.75%,69.13% 96.19%,58.39% 92.17%,50.00% 100.00%,41.61% 92.17%,30.87% 96.19%,26.11% 85.75%,14.64% 85.36%,14.25% 73.89%,3.81% 69.13%,7.83% 58.39%,0.00% 50.00%,7.83% 41.61%,3.81% 30.87%,14.25% 26.11%,14.64% 14.64%,26.11% 14.25%,30.87% 3.81%,41.61% 7.83%)}
+body[data-badge=b] .price .tb::before{content:"";position:absolute;inset:.42em;border-radius:50%;border:2px dashed rgba(20,11,20,.4)}
+body[data-badge=b] .price .tb::after{content:"";position:absolute;left:50%;top:.62em;width:.34em;height:.34em;margin-left:-.17em;background:#B4502F;
+  clip-path:polygon(50% 0,61% 26%,85% 15%,74% 39%,100% 50%,74% 61%,85% 85%,61% 74%,50% 100%,39% 74%,15% 85%,26% 61%,0 50%,26% 39%,15% 15%,39% 26%)}
+body[data-badge=b] .price .n{margin-top:.15em}
+body[data-badge=b] .product:hover .price,body[data-badge=b] .card:hover .price{rotate:12deg;scale:1.06}
+body[data-badge=b] .reveal.in .price{animation:starPop .9s var(--ease) both}
+@keyframes starPop{0%{scale:.2;rotate:-120deg;opacity:0}70%{scale:1.1;rotate:-4deg;opacity:1}100%{scale:1;rotate:-9deg}}
+body[data-badge=b] .sticker{background:radial-gradient(circle,#FFD23F 0 55%,transparent 56%),repeating-conic-gradient(from 11.25deg,#FFD23F 0 11.25deg,#FFC21F 11.25deg 22.5deg);border-radius:0;clip-path:polygon(50.00% 0.00%,58.39% 7.83%,69.13% 3.81%,73.89% 14.25%,85.36% 14.64%,85.75% 26.11%,96.19% 30.87%,92.17% 41.61%,100.00% 50.00%,92.17% 58.39%,96.19% 69.13%,85.75% 73.89%,85.36% 85.36%,73.89% 85.75%,69.13% 96.19%,58.39% 92.17%,50.00% 100.00%,41.61% 92.17%,30.87% 96.19%,26.11% 85.75%,14.64% 85.36%,14.25% 73.89%,3.81% 69.13%,7.83% 58.39%,0.00% 50.00%,7.83% 41.61%,3.81% 30.87%,14.25% 26.11%,14.64% 14.64%,26.11% 14.25%,30.87% 3.81%,41.61% 7.83%);box-shadow:none;width:clamp(96px,13vw,140px)}
+body[data-badge=b] .sticker.s2{background:radial-gradient(circle,#FFF6E9 0 55%,transparent 56%),repeating-conic-gradient(from 11.25deg,#FFF6E9 0 11.25deg,#F7E6CF 11.25deg 22.5deg)}
+body[data-badge=b] .sticker::before{content:"";position:absolute;inset:16%;border-radius:50%;border:2px dashed rgba(20,11,20,.4)}
+@media (prefers-reduced-motion: reduce){body[data-badge] .price,body[data-badge] .price .tb{animation:none!important;transition:none!important}}
+body[data-badge=b] .price.price{color:var(--ink)}
 </style>
 </head>
-<body>
+<body data-badge="b">
 <a class="skip" href="#produits">Aller aux articles</a>
 <div class="progress" aria-hidden="true"></div>
 
@@ -335,7 +359,7 @@ footer small{display:block;margin-top:.4rem;font-size:.8rem;opacity:.8}
             <h3 id="p1">Pack de 4 boîtes de rangement</h3>
             <p>Quatre boîtes Lamacom transparentes en plastique alimentaire, avec couvercles orange, en quatre tailles qui s’emboîtent. Pour conserver les restes, ranger les placards et garder la cuisine en ordre.</p>
             <ul class="feats"><li>4 tailles</li><li>Plastique alimentaire</li><li>Fermeture hermétique</li><li>Fabriqué au Maroc</li></ul>
-            <div class="price" aria-label="Prix : 35 dirhams"><span class="n">35</span><span class="c">&nbsp;DH</span></div>
+            <div class="price" aria-label="Prix : 35 dirhams"><span class="tb"><span class="n">35</span><span class="c">&nbsp;DH</span></span></div>
             <a class="btn btn-wa btn-order" data-wa data-wa-text="Bonjour Tifawin Temara, je voudrais commander le Pack de 4 boîtes de rangement à 35 DH." href="https://wa.me/212604055855"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.47-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2-1.42.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35m-5.42 7.4h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 0 1 2.89 6.99c0 5.45-4.43 9.88-9.88 9.88m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.69 1.45h.01c6.55 0 11.89-5.34 11.89-11.89a11.82 11.82 0 0 0-3.48-8.41z"/></svg>Commander sur WhatsApp</a>
           </div>
         </article>
@@ -351,7 +375,7 @@ footer small{display:block;margin-top:.4rem;font-size:.8rem;opacity:.8}
             <h3 id="p2">Grande poêle 21 cm, rouge granite</h3>
             <p>Poêle Lamacom de 21 cm au revêtement effet granite rouge, avec manche noir. La taille idéale pour les œufs, les crêpes et la cuisine de tous les jours.</p>
             <ul class="feats"><li>21 cm</li><li>Effet granite rouge</li><li>Sans PFOA</li><li>Fabriqué au Maroc</li></ul>
-            <div class="price" aria-label="Prix : 45 dirhams"><span class="n">45</span><span class="c">&nbsp;DH</span></div>
+            <div class="price" aria-label="Prix : 45 dirhams"><span class="tb"><span class="n">45</span><span class="c">&nbsp;DH</span></span></div>
             <a class="btn btn-wa btn-order" data-wa data-wa-text="Bonjour Tifawin Temara, je voudrais commander la Grande poêle 21 cm rouge granite à 45 DH." href="https://wa.me/212604055855"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.47-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2-1.42.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35m-5.42 7.4h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 0 1 2.89 6.99c0 5.45-4.43 9.88-9.88 9.88m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.69 1.45h.01c6.55 0 11.89-5.34 11.89-11.89a11.82 11.82 0 0 0-3.48-8.41z"/></svg>Commander sur WhatsApp</a>
           </div>
         </article>
@@ -373,7 +397,7 @@ footer small{display:block;margin-top:.4rem;font-size:.8rem;opacity:.8}
             <h3 id="n1">Passoires en plastique rouges</h3>
             <p>Passoire ronde Lamacom en plastique rouge, à tamis fin et long manche avec trou pour l’accrocher. Pour égoutter, filtrer et rincer fruits et légumes.</p>
             <ul class="feats"><li>Tamis fin</li><li>Manche à accrocher</li><li>Rouge vif</li></ul>
-            <div class="price" aria-label="Prix : 15 dirhams"><span class="n">15</span><span class="c">&nbsp;DH</span></div>
+            <div class="price" aria-label="Prix : 15 dirhams"><span class="tb"><span class="n">15</span><span class="c">&nbsp;DH</span></span></div>
             <a class="btn btn-wa btn-order" data-wa data-wa-text="Bonjour Tifawin Temara, je voudrais commander : Passoires en plastique rouges à 15 DH." href="https://wa.me/212604055855"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.47-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2-1.42.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35m-5.42 7.4h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 0 1 2.89 6.99c0 5.45-4.43 9.88-9.88 9.88m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.69 1.45h.01c6.55 0 11.89-5.34 11.89-11.89a11.82 11.82 0 0 0-3.48-8.41z"/></svg>Commander sur WhatsApp</a>
           </div>
         </article>
@@ -388,7 +412,7 @@ footer small{display:block;margin-top:.4rem;font-size:.8rem;opacity:.8}
             <h3 id="n2">Grandes fourchettes Lamacom (lot de 6)</h3>
             <p>Six grandes fourchettes Lamacom en métal brillant, pour la table de tous les jours et les repas en famille.</p>
             <ul class="feats"><li>Lot de 6</li><li>Grand format</li><li>Métal brillant</li></ul>
-            <div class="price" aria-label="Prix : 20 dirhams"><span class="n">20</span><span class="c">&nbsp;DH</span></div>
+            <div class="price" aria-label="Prix : 20 dirhams"><span class="tb"><span class="n">20</span><span class="c">&nbsp;DH</span></span></div>
             <a class="btn btn-wa btn-order" data-wa data-wa-text="Bonjour Tifawin Temara, je voudrais commander : Grandes fourchettes Lamacom (lot de 6) à 20 DH." href="https://wa.me/212604055855"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.47-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2-1.42.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35m-5.42 7.4h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 0 1 2.89 6.99c0 5.45-4.43 9.88-9.88 9.88m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.69 1.45h.01c6.55 0 11.89-5.34 11.89-11.89a11.82 11.82 0 0 0-3.48-8.41z"/></svg>Commander sur WhatsApp</a>
           </div>
         </article>
@@ -403,7 +427,7 @@ footer small{display:block;margin-top:.4rem;font-size:.8rem;opacity:.8}
             <h3 id="n3">Pot à épices en verre</h3>
             <p>Pot en verre avec couvercle beige, bande effet bois à motif grec et petite cuillère. Pour garder les épices au sec et à portée de main. Vendu à l’unité.</p>
             <ul class="feats"><li>Verre</li><li>Couvercle beige</li><li>Petite cuillère</li></ul>
-            <div class="price" aria-label="Prix : 18 dirhams"><span class="n">18</span><span class="c">&nbsp;DH</span></div>
+            <div class="price" aria-label="Prix : 18 dirhams"><span class="tb"><span class="n">18</span><span class="c">&nbsp;DH</span></span></div>
             <a class="btn btn-wa btn-order" data-wa data-wa-text="Bonjour Tifawin Temara, je voudrais commander : Pot à épices en verre (à l’unité) à 18 DH." href="https://wa.me/212604055855"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.47-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2-1.42.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35m-5.42 7.4h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 0 1 2.89 6.99c0 5.45-4.43 9.88-9.88 9.88m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.69 1.45h.01c6.55 0 11.89-5.34 11.89-11.89a11.82 11.82 0 0 0-3.48-8.41z"/></svg>Commander sur WhatsApp</a>
           </div>
         </article>
@@ -418,7 +442,7 @@ footer small{display:block;margin-top:.4rem;font-size:.8rem;opacity:.8}
             <h3 id="n4">Râpe inox</h3>
             <p>Râpe plate en acier inoxydable, avec plusieurs zones de râpage. Pour le fromage, les carottes, les courgettes et les zestes.</p>
             <ul class="feats"><li>Inox</li><li>Plusieurs râpes en une</li><li>Poignée</li></ul>
-            <div class="price" aria-label="Prix : 18 dirhams"><span class="n">18</span><span class="c">&nbsp;DH</span></div>
+            <div class="price" aria-label="Prix : 18 dirhams"><span class="tb"><span class="n">18</span><span class="c">&nbsp;DH</span></span></div>
             <a class="btn btn-wa btn-order" data-wa data-wa-text="Bonjour Tifawin Temara, je voudrais commander : Râpe inox à 18 DH." href="https://wa.me/212604055855"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.47-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2-1.42.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35m-5.42 7.4h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 0 1 2.89 6.99c0 5.45-4.43 9.88-9.88 9.88m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.69 1.45h.01c6.55 0 11.89-5.34 11.89-11.89a11.82 11.82 0 0 0-3.48-8.41z"/></svg>Commander sur WhatsApp</a>
           </div>
         </article>
