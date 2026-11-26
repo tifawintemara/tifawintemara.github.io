@@ -504,6 +504,11 @@ body.v-has-cart .wa-float{display:none!important}
 @media (prefers-reduced-motion: reduce){.v-frame,.v-ph img{transition:none}}
 @media (max-width:600px){.v-prices{display:none}.v-tools{padding:.55rem 0}.v-rayons{padding-top:.5rem}.v-search input{padding-top:.65rem;padding-bottom:.65rem}}
 .v-rayon{scroll-margin-top:calc(var(--hdr,0px) + 140px)}
+/* catalogue v2 : prix sur demande, disponibilité à confirmer, « voir tout le rayon » */
+.v-price.v-ask,.v-pr .v-ask{font-size:.82rem;font-weight:800;letter-spacing:.01em;color:var(--wine);background:color-mix(in srgb,var(--wine) 9%,#fff);padding:.2rem .5rem;border-radius:999px;white-space:nowrap}
+.v-pr .v-ask{font-size:1rem;padding:.3rem .7rem}
+.v-flag.v-dc{left:16px;right:auto;top:16px;bottom:auto;background:rgba(255,255,255,.92);color:var(--wine);box-shadow:inset 0 0 0 1.5px var(--wine)}
+.v-more{display:flex;margin:1.1rem auto 0;min-height:46px;padding:.6rem 1.2rem;font-weight:700}
 
 </style>
 </head>
@@ -563,7 +568,7 @@ body.v-has-cart .wa-float{display:none!important}
 <section id="produits" class="v-root" aria-labelledby="t-prod">
 <header class="v-intro"><div class="v-zellige" aria-hidden="true"></div><div class="v-wrap" style="position:relative">
   <span class="v-kicker"><span lang="ar" dir="rtl">مرحبا</span> Bienvenue chez Tifawin Temara</span>
-  <p class="v-eyebrow">Le catalogue · 17 articles</p><h2 class="v-h" id="t-prod">Composez <em>votre panier</em>,<br>on le prépare à Témara.</h2>
+  <p class="v-eyebrow">Le catalogue · 139 articles</p><h2 class="v-h" id="t-prod">Composez <em>votre panier</em>,<br>on le prépare à Témara.</h2>
   <p class="v-lead">Choisissez un rayon, ajoutez vos articles, puis envoyez votre liste sur WhatsApp en un seul message, avec les quantités et le total déjà calculés.</p>
 </div></header>
 
@@ -571,7 +576,7 @@ body.v-has-cart .wa-float{display:none!important}
   <div class="v-search" role="search">
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 2a8 8 0 0 1 6.3 12.9l5.4 5.4-1.4 1.4-5.4-5.4A8 8 0 1 1 10 2zm0 2a6 6 0 1 0 0 12 6 6 0 0 0 0-12z"/></svg>
     <label class="v-sr" for="q">Rechercher un article</label>
-    <input id="q" type="search" placeholder="Chercher : poêle, bols, râpe…" autocomplete="off" enterkeyhint="search">
+    <input id="q" type="search" placeholder="Chercher : théière, verres, poêle…" autocomplete="off" enterkeyhint="search">
     <label class="v-sr" for="sort">Trier</label>
     <select id="sort"><option value="rayon">Par rayon</option><option value="asc">Prix ↑</option><option value="desc">Prix ↓</option></select>
   </div>
@@ -709,14 +714,19 @@ document.documentElement.classList.add("js");
 
 const WA = "212604055855";
 const RAYONS = [
-  {id:"rangement",nom:"Rangement",ic:"🫙",c:"#FFC2A1"},
   {id:"cuisson",nom:"Cuisson",ic:"🍳",c:"#F4977A"},
-  {id:"ustensiles",nom:"Ustensiles",ic:"🥄",c:"#FFD23F"},
+  {id:"the",nom:"Thé & café",ic:"🫖",c:"#D9A441"},
+  {id:"verres",nom:"Verres & carafes",ic:"🥛",c:"#9ECFE0"},
   {id:"vaisselle",nom:"Vaisselle",ic:"🍽️",c:"#8DB3E2"},
-  {id:"epices",nom:"Épices",ic:"🌶️",c:"#E9A07F"},
-  {id:"paniers",nom:"Paniers & plateaux",ic:"🧺",c:"#7FB7A4"}];
+  {id:"ustensiles",nom:"Ustensiles",ic:"🥄",c:"#FFD23F"},
+  {id:"rangement",nom:"Rangement",ic:"🫙",c:"#FFC2A1"},
+  {id:"epices",nom:"Épices & huiles",ic:"🌶️",c:"#E9A07F"},
+  {id:"paniers",nom:"Paniers & plateaux",ic:"🧺",c:"#7FB7A4"},
+  {id:"electro",nom:"Électroménager",ic:"🔌",c:"#B7A6E0"},
+  {id:"maison",nom:"Maison & divers",ic:"🏠",c:"#A9C48F"}];
 const L = "img/";
-// Les 17 articles réels de la gestion Tifawin (prix au 25/11/2026). Aucun article inventé.
+// Tous les articles réels de Tifawin : les 17 de la gestion + ceux de la boutique en ligne (prix au 26/11/2026). Aucun article inventé.
+// prix:null = « Prix sur demande » (prix à confirmer) ; dc:1 = disponibilité à confirmer ; sans img = photo à venir.
 const P = [
   {id:"boites",r:"rangement",nom:"Pack de 4 boîtes de rangement",prix:35,img:"img/vitrine/pack-4-boites",visuel:L+"boites-campagne-1000.webp",d:"Quatre boîtes Lamacom en plastique alimentaire, en quatre tailles qui s’emboîtent. Pour conserver les restes, ranger les placards et garder la cuisine en ordre.",k:"boite rangement conservation lamacom plastique"},
   {id:"poele21",r:"cuisson",nom:"Grande poêle 21 cm, rouge granite",prix:45,img:"img/vitrine/poele-21cm",visuel:L+"poele-campagne-1200.webp",d:"Poêle Lamacom de 21 cm au revêtement effet granite rouge, avec manche noir. La taille idéale pour les œufs, les crêpes et la cuisine de tous les jours.",k:"poele granite rouge lamacom"},
@@ -731,13 +741,135 @@ const P = [
   {id:"bolsbu",r:"vaisselle",nom:"Bols bleus",prix:10,img:"img/vitrine/bols-bleus",d:"Bols en porcelaine à motif bleu.",k:"bol bleu porcelaine vaisselle"},
   {id:"epices",r:"epices",nom:"Pot à épices en verre",prix:18,visuel:L+"pot-epices-campagne-1000.webp",thumb:L+"pot-epices-campagne-600.webp",d:"Pot en verre avec couvercle beige, bande effet bois à motif grec et petite cuillère. Pour garder les épices au sec et à portée de main. Vendu à l’unité.",k:"pot epices verre bocal"},
   {id:"panier",r:"paniers",nom:"Panier en corde de coton MINISO",prix:15,img:"img/vitrine/panier-miniso",d:"Panier MINISO en corde de coton tressée, avec anses.",k:"panier corde coton miniso rangement"},
-  {id:"plt1",r:"paniers",nom:"Plateau plastique T1",prix:20,d:"Plateau en plastique, taille 1.",k:"plateau plastique service"},
-  {id:"plt2",r:"paniers",nom:"Plateau plastique T2",prix:30,d:"Plateau en plastique, taille 2.",k:"plateau plastique service"},
-  {id:"plt3",r:"paniers",nom:"Plateau plastique T3",prix:35,d:"Plateau en plastique, taille 3.",k:"plateau plastique service"},
-  {id:"plt4",r:"paniers",nom:"Plateau plastique T4",prix:45,d:"Plateau en plastique, taille 4.",k:"plateau plastique service"}];
-const RDESC = {rangement:"Des boîtes qui s’emboîtent, pour une cuisine en ordre.",cuisson:"Les poêles Lamacom du quotidien, en trois tailles.",ustensiles:"Les indispensables du tiroir, à petits prix.",vaisselle:"Des bols simples pour la table de tous les jours.",epices:"Pour garder les épices au sec et à portée de main.",paniers:"Ranger, présenter, servir."};
+  {id:"plt1",r:"paniers",nom:"Plateau plastique T1",img:"img/vitrine/plateaux-bois",prix:25,d:"Plateau en plastique, taille 1.",k:"plateau plastique service"},
+  {id:"plt2",r:"paniers",nom:"Plateau plastique T2",img:"img/vitrine/plateaux-bois",prix:30,d:"Plateau en plastique, taille 2.",k:"plateau plastique service"},
+  {id:"plt3",r:"paniers",nom:"Plateau plastique T3",img:"img/vitrine/plateaux-bois",prix:35,d:"Plateau en plastique, taille 3.",k:"plateau plastique service"},
+  {id:"plt4",r:"paniers",nom:"Plateau plastique T4",img:"img/vitrine/plateaux-bois",prix:45,d:"Plateau en plastique, taille 4.",k:"plateau plastique service"},
+  {id:"w3757",r:"cuisson",nom:"Poêle inox Lamacom 26 cm",prix:220,img:"img/vitrine/poele-inox-26",d:"",k:"mekla cuisson 26cm lamacom inox",dc:1},
+  {id:"w3708",r:"cuisson",nom:"Poêle inox à deux anses Lamacom",prix:240,img:"img/vitrine/poele-deux-anses-inox",d:"",k:"poele deux anses inox lamacom"},
+  {id:"w3706",r:"cuisson",nom:"Kit de 3 moules à cake effet granite",prix:40,img:"img/vitrine/moules-cake-granite",d:"",k:"moule cake granite patisserie"},
+  {id:"w3667",r:"cuisson",nom:"Poêle à frites, petite",prix:110,img:"img/vitrine/poele-frites-petite",d:"",k:"poiles a frites petit friteuse"},
+  {id:"w3665",r:"cuisson",nom:"Poêle à frites",prix:130,img:"img/vitrine/poele-frites",d:"",k:"poiles a frites friteuse lamacom"},
+  {id:"w3681",r:"cuisson",nom:"Set de 5 casseroles, rouge",prix:420,img:"img/vitrine/casseroles-5-rouge",d:"",k:"casrona 5 pieces hmed rouge casserole",dc:1},
+  {id:"w3661",r:"cuisson",nom:"Set de 5 casseroles, gris à pois",prix:250,img:"img/vitrine/casseroles-5-grise-pois",d:"",k:"caserona 5 pieces grise pointie casserole",dc:1},
+  {id:"w3659",r:"cuisson",nom:"Set de 5 casseroles « fléchées »",prix:300,img:"img/vitrine/casseroles-5-flechees",d:"",k:"caserona flechés casserole"},
+  {id:"w3657",r:"cuisson",nom:"Set de 3 casseroles, orange",prix:120,img:"img/vitrine/casseroles-3-orange",d:"",k:"caserona orange trois pieces casserole"},
+  {id:"w3596",r:"cuisson",nom:"Casserole avec couvercle",prix:90,img:"img/vitrine/casserole-couvercle",d:"",k:"casrona bghataya casserole couvercle"},
+  {id:"w3422",r:"cuisson",nom:"Cocotte-minute 3 L, bleue",prix:400,img:"img/vitrine/cocotte-pression-3l",d:"",k:"cocotte pression autocuiseur taj",dc:1},
+  {id:"w3420",r:"cuisson",nom:"Cocotte-minute et couscoussier 3 L",prix:null,img:"img/vitrine/cocotte-couscoussier",d:"",k:"cocotte couscoussier auto taj multifonction"},
+  {id:"w3710",r:"the",nom:"Théière inox Lamacom, 12 verres",prix:120,img:"img/vitrine/theiere-lamacom-12",d:"",k:"theiere lamacom inox 12 verres"},
+  {id:"w3562",r:"the",nom:"Théière inox Lamacom, 10 verres",prix:90,img:"img/vitrine/theiere-lamacom-10",d:"",k:"theiere lamacom inox 10 verres"},
+  {id:"w3564",r:"the",nom:"Théière inox Lamacom, 8 verres",prix:80,img:"img/vitrine/theiere-lamacom-8",d:"",k:"theiere lamacom inox 8 verres"},
+  {id:"w3567",r:"the",nom:"Théière inox Lamacom, 6 verres",prix:75,img:"img/vitrine/theiere-lamacom-6",d:"",k:"theiere lamacom inox 6 verres"},
+  {id:"w3569",r:"the",nom:"Théière inox Lamacom, 2 verres",prix:55,img:"img/vitrine/theiere-lamacom-2",d:"",k:"theiere lamacom inox 2 verres"},
+  {id:"w3573",r:"the",nom:"Théière inox Sanar 48 oz",prix:90,img:"img/vitrine/theiere-sanar",d:"",k:"theiere sanar inox"},
+  {id:"w3571",r:"the",nom:"Théière Kobross 36 oz",prix:85,img:"img/vitrine/theiere-kobross",d:"",k:"theiere kobross"},
+  {id:"w3560",r:"the",nom:"Théière Taj Chachia 0,4 L",prix:70,img:"img/vitrine/theiere-taj-chachia",d:"",k:"theiere taj chachia tea pot"},
+  {id:"w3556",r:"the",nom:"Bouilloire sifflante inox Inoxia 3 L",prix:125,img:"img/vitrine/bouilloire-sifflante",d:"",k:"bouilloire sifflante inox inoxia"},
+  {id:"w3590",r:"the",nom:"Cafetière Fagor, couleur",prix:230,img:"img/vitrine/cafetiere-fagor-couleur",d:"",k:"cafetiere fagor"},
+  {id:"w3588",r:"the",nom:"Cafetière Fagor, grise",prix:200,img:"img/vitrine/cafetiere-fagor-grise",d:"",k:"cafetiere fagor gris"},
+  {id:"w3587",r:"the",nom:"Cafetière italienne, très grande",prix:90,img:"img/vitrine/cafetiere-italienne-xl",d:"",k:"cafetiere italie moka espresso"},
+  {id:"w3586",r:"the",nom:"Cafetière italienne, grande",prix:75,img:"img/vitrine/cafetiere-italienne-grande",d:"",k:"cafetiere italie moka espresso"},
+  {id:"w3585",r:"the",nom:"Cafetière italienne, moyenne",prix:68,img:"img/vitrine/cafetiere-italienne-moyenne",d:"",k:"cafetiere italie moka espresso"},
+  {id:"w3583",r:"the",nom:"Cafetière italienne, petite",prix:60,img:"img/vitrine/cafetiere-italienne-petite",d:"",k:"cafetiere italie moka espresso"},
+  {id:"w3581",r:"the",nom:"Thermos Tatch 1 L",prix:60,img:"img/vitrine/thermos-tatch",d:"",k:"thermos tatch"},
+  {id:"w3579",r:"the",nom:"Thermos blanc à pois",prix:75,img:"img/vitrine/thermos-blanc-pois",d:"",k:"thermos blanc pointies pois"},
+  {id:"w3577",r:"the",nom:"Thermos blanc à fruits",prix:70,img:"img/vitrine/thermos-blanc-fruits",d:"",k:"thermos blanc fruits"},
+  {id:"w3575",r:"the",nom:"Thermos blanc côtelé Kitchen",prix:75,img:"img/vitrine/thermos-blanc-kitchen",d:"",k:"thermos blanc kitchen vacuum flask"},
+  {id:"w3437",r:"the",nom:"Verres à thé décorés, 12 grands",prix:110,img:"img/vitrine/verres-the-12-grands",d:"",k:"kissan zaje 12 verres grand the"},
+  {id:"w3440",r:"the",nom:"Verres à thé décorés, 12 petits",prix:90,img:"img/vitrine/verres-the-12-petits",d:"",k:"kissan zaje 12 verres sghira the"},
+  {id:"w3444",r:"the",nom:"Verres à thé simples",prix:null,img:"img/vitrine/verres-the-simples",d:"",k:"verres de the simple"},
+  {id:"w3634",r:"the",nom:"Verres à thé Elite",prix:45,img:"img/vitrine/verres-the-elite",d:"",k:"elite kass atay verres the"},
+  {id:"w3636",r:"the",nom:"6 tasses à café avec soucoupes en verre",prix:40,img:"img/vitrine/tasses-cafe-verre-6",d:"",k:"tasse cafe sous tasse verre"},
+  {id:"w3749",r:"verres",nom:"Verres Luce, boîte de 6",prix:50,img:"img/vitrine/verres-luce-6",d:"",k:"verres a eau luce"},
+  {id:"w3654",r:"verres",nom:"Verres à eau dorés Mdahbin",prix:55,img:"img/vitrine/verres-mdahbin",d:"",k:"verres a eau mdahbin dore"},
+  {id:"w3630",r:"verres",nom:"Verres dorés Mdaheb, en boîte",prix:50,img:"img/vitrine/verres-mdaheb-boite",d:"",k:"kass mdaheb boite verres dore"},
+  {id:"w3652",r:"verres",nom:"Verres Revera 300 ml",prix:55,img:"img/vitrine/verres-revera",d:"",k:"kess revera verres"},
+  {id:"w3650",r:"verres",nom:"Verres Blinkmax, boîte de 6",prix:80,img:"img/vitrine/verres-blinkmax-6",d:"",k:"kess blinkmax verres boite 6"},
+  {id:"w3648",r:"verres",nom:"Verres City Glass, boîte de 6",prix:50,img:"img/vitrine/verres-city-glass-6",d:"",k:"city glass verres boite 6"},
+  {id:"w3461",r:"verres",nom:"Grands verres, boîte de 6",prix:45,img:"img/vitrine/grands-verres-6",d:"",k:"kess kbir boite 6 grand verres"},
+  {id:"w3381",r:"verres",nom:"Verres à pied Dreamlight, grands",prix:65,img:"img/vitrine/verres-dreamlight",d:"",k:"verres dreamlight pied"},
+  {id:"w29",r:"verres",nom:"Verres à pied Fabulous",prix:null,img:"img/vitrine/verres-fabulous",d:"",k:"verres fabulous pied"},
+  {id:"w3621",r:"verres",nom:"Carafe en verre Surahi",prix:40,img:"img/vitrine/carafe-surahi",d:"",k:"gharraf surahi carafe verre"},
+  {id:"w3628",r:"verres",nom:"Carafe Tango",prix:40,img:"img/vitrine/carafe-tango",d:"",k:"gharraf noir carafe tango"},
+  {id:"w3632",r:"verres",nom:"Bouteille en verre (Glass Bottle)",prix:40,img:"img/vitrine/bouteille-verre",d:"",k:"gharraf zaje avec pay bouteille verre"},
+  {id:"w3594",r:"verres",nom:"Carafe à eau en verre",prix:60,img:"img/vitrine/carafes-eau-verre",d:"",k:"vase eau carafe verre"},
+  {id:"w61",r:"verres",nom:"Gourde Sport",prix:30,img:"img/vitrine/gourde-sport",d:"",k:"gourde bouteille eau sport"},
+  {id:"w24",r:"vaisselle",nom:"Assiette (blanche ou noire)",prix:13,img:"img/vitrine/assiette-luminarc",d:"",k:"assiette luminarc blanche noire"},
+  {id:"w94",r:"vaisselle",nom:"Bols en bois ronds, set de 4",prix:75,img:"img/vitrine/bols-bois-ronds",d:"",k:"bols bois bambou rond"},
+  {id:"w89",r:"vaisselle",nom:"Bols en bois carrés, set de 4",prix:75,img:"img/vitrine/bols-bois-carres",d:"",k:"bols bois bambou carre"},
+  {id:"w3413",r:"vaisselle",nom:"Set de 2 plats ronds en verre Borcam",prix:75,img:"img/vitrine/plats-borcam-ronds",d:"",k:"bol rond borcam plat verre four"},
+  {id:"w3411",r:"vaisselle",nom:"Set de 2 plats ovales en verre Borcam",prix:75,img:"img/vitrine/plats-borcam-ovales",d:"",k:"bols ovale borcam plat verre four"},
+  {id:"w3409",r:"vaisselle",nom:"Set de 2 plats carrés en verre Borcam",prix:75,img:"img/vitrine/plats-borcam-carres",d:"",k:"bols carre borcam plat verre four"},
+  {id:"w3720",r:"vaisselle",nom:"Ferraka en verre, 6 compartiments",prix:150,img:"img/vitrine/ferraka-verre-6",d:"",k:"zaje ferraka six fruits secs"},
+  {id:"w3673",r:"vaisselle",nom:"Ferraka 6 coupelles sur plateau bois",prix:null,img:"img/vitrine/ferraka-6-plateau-bois",d:"",k:"ferraka zaje 6 fruits secs"},
+  {id:"w3373",r:"vaisselle",nom:"Ferraka 4 coupelles",prix:100,img:"img/vitrine/ferraka-4",d:"",k:"ferraka zaje 4 fruits secs",dc:1},
+  {id:"w3671",r:"vaisselle",nom:"Bonbonnière en verre Yesink",prix:40,img:"img/vitrine/bonbonniere-yesink",d:"",k:"soukarya yesink bonbonniere sucre"},
+  {id:"w3598",r:"vaisselle",nom:"Grande bonbonnière à miel",prix:45,img:"img/vitrine/bonbonniere-miel",d:"",k:"grande soukarya miel"},
+  {id:"w3405",r:"vaisselle",nom:"Bonbonnière en verre taillé, modèle A",prix:15,img:"img/vitrine/bonbonniere-a",d:"",k:"soukarya a bonbonniere"},
+  {id:"w3407",r:"vaisselle",nom:"Bonbonnière en verre taillé, modèle B",prix:15,img:"img/vitrine/bonbonniere-b",d:"",k:"soukrya b bonbonniere"},
+  {id:"w3696",r:"ustensiles",nom:"Cuillères à café Nka",prix:20,img:"img/vitrine/cuilleres-cafe-nka",d:"",k:"cuillere a cafe nka"},
+  {id:"w3694",r:"ustensiles",nom:"Cuillères à café au lait",prix:20,img:"img/vitrine/cuilleres-cafe-lait",d:"",k:"cuillere a cafe au lait"},
+  {id:"w3692",r:"ustensiles",nom:"Petites cuillères à café",prix:16,img:"img/vitrine/petites-cuilleres-cafe",d:"",k:"petite cuillere a cafe"},
+  {id:"w3606",r:"ustensiles",nom:"Pack couverts Lamacom A",prix:75,img:"img/vitrine/pack-lamacom-a",d:"",k:"pack lamacom couverts"},
+  {id:"w3604",r:"ustensiles",nom:"Râpe manuelle multi-faces",prix:18,img:"img/vitrine/rape-set",d:"",k:"7akaka yadawya rape"},
+  {id:"w3558",r:"ustensiles",nom:"Râpe inox Lamacom, bande rouge",prix:15,img:"img/vitrine/rape-lamacom-rouge",d:"",k:"7akaka lamacom inox rape"},
+  {id:"w3689",r:"ustensiles",nom:"Presse-ail",prix:18,img:"img/vitrine/presse-ail",d:"",k:"presse ail"},
+  {id:"w3602",r:"ustensiles",nom:"Fouet Lamacom",prix:18,img:"img/vitrine/fouet-lamacom",d:"",k:"fouet lamacom"},
+  {id:"w3600",r:"ustensiles",nom:"Coupe-légumes Lamacom + couteau offert",prix:40,img:"img/vitrine/coupe-legumes-lamacom",d:"",k:"lamacom katta3 coupe legumes couteau"},
+  {id:"w3704",r:"ustensiles",nom:"Essoreuse lave et sèche légumes Lamacom",prix:35,img:"img/vitrine/essoreuse-legumes",d:"",k:"lave seche legumes salade lamacom"},
+  {id:"w3502",r:"ustensiles",nom:"Petite passoire inox",prix:null,img:"img/vitrine/petite-passoire-inox",d:"",k:"misfat sghira inox passoire tamis"},
+  {id:"w3642",r:"ustensiles",nom:"Pince en métal",prix:20,img:"img/vitrine/pince-metal",d:"",k:"pince metal cuisine"},
+  {id:"w3500",r:"ustensiles",nom:"Ouvre-boîte",prix:null,img:"img/vitrine/ouvre-boite",d:"",k:"ouvre boite"},
+  {id:"w3464",r:"ustensiles",nom:"Éplucheur Lamacom",prix:null,img:"img/vitrine/eplucheur-lamacom",d:"",k:"epulcheur eplucheur lamacom"},
+  {id:"w3498",r:"ustensiles",nom:"Petit couteau de cuisine",prix:null,img:"img/vitrine/couteau-cuisine-petit",d:"",k:"couteau de cuisine 12 petit"},
+  {id:"w3494",r:"ustensiles",nom:"Couteaux, boîte de 4",prix:null,img:"img/vitrine/couteaux-4",d:"",k:"couteau 7adda boite 4"},
+  {id:"w3712",r:"rangement",nom:"8 bocaux de conservation en verre",prix:170,img:"img/vitrine/bocaux-conservation-8",d:"",k:"bocaux conservation verre"},
+  {id:"w3669",r:"rangement",nom:"9 bocaux de conservation en verre",prix:190,img:"img/vitrine/bocaux-conservation-9",d:"",k:"bocaux conservation verre",dc:1},
+  {id:"w3418",r:"rangement",nom:"Set de 12 bocaux en verre",prix:100,img:"img/vitrine/bocaux-verre-12",d:"",k:"glass jar set 12 bocaux"},
+  {id:"w3511",r:"rangement",nom:"Bocal en verre à clip 350 ml",prix:35,img:"img/vitrine/bocal-clip-350",d:"",k:"9er3a zaje 350ml bocal"},
+  {id:"w3509",r:"rangement",nom:"Bocal en verre à clip 750 ml",prix:null,img:"img/vitrine/bocal-clip-750",d:"",k:"9er3a zaje 750ml bocal"},
+  {id:"w3507",r:"rangement",nom:"Bocal en verre à clip 1 L",prix:40,img:"img/vitrine/bocal-clip-1l",d:"",k:"9er3a zaje 1 litre bocal"},
+  {id:"w3718",r:"rangement",nom:"Trois caissons de rangement en tissu",prix:150,img:"img/vitrine/caissons-tissu-3",d:"",k:"trois caissons rangement tissu"},
+  {id:"w3483",r:"rangement",nom:"Panier de rangement pour réfrigérateur",prix:18,img:"img/vitrine/panier-frigo",d:"",k:"chebka telaja frigo panier"},
+  {id:"w3554",r:"rangement",nom:"Égouttoir à vaisselle en aluminium",prix:300,img:"img/vitrine/egouttoir-vaisselle",d:"",k:"rangement vaisselle egouttoir dish rack"},
+  {id:"w3663",r:"rangement",nom:"Étagère à chaussures 8 niveaux",prix:90,img:"img/vitrine/etagere-chaussures",d:"",k:"rack chaussures etagere"},
+  {id:"w3375",r:"epices",nom:"Petit bocal à épices en verre",prix:8,img:"img/vitrine/petit-bocal-epices",d:"",k:"ker3a 3atrya sghira zaje bocal epices"},
+  {id:"w3610",r:"epices",nom:"9 bocaux à épices en verre",prix:160,img:"img/vitrine/bocaux-epices-9",d:"",k:"glass maroc epices 9 boites"},
+  {id:"w3608",r:"epices",nom:"Boîtes à épices sur support",prix:120,img:"img/vitrine/boites-epices-set",d:"",k:"boites a epices"},
+  {id:"w3615",r:"epices",nom:"Rack à épices avec bocaux",prix:170,img:"img/vitrine/rack-epices-bocaux",d:"",k:"rak avec bouteilles epices cookman"},
+  {id:"w3614",r:"epices",nom:"Huiliers décoratifs Zyata Maroc",prix:90,img:"img/vitrine/zyata-maroc",d:"",k:"zyata maroc huile bouteille"},
+  {id:"w3699",r:"epices",nom:"Huiliers en verre, grand modèle décoré",prix:90,img:"img/vitrine/zyata-kbira-matrouza",d:"",k:"zyata kbira matrouza huile"},
+  {id:"w3698",r:"epices",nom:"Huiliers en verre, grand modèle",prix:90,img:"img/vitrine/zyata-kbira",d:"",k:"zyata kbira huile oil bottle"},
+  {id:"w3697",r:"epices",nom:"Huiliers en verre, petit modèle",prix:70,img:"img/vitrine/zyata-sghira",d:"",k:"zyata sghira huile oil bottle"},
+  {id:"w101",r:"paniers",nom:"Panier doublé de tissu",prix:25,img:"img/vitrine/panier-tissu",d:"",k:"paniers panier tissu"},
+  {id:"w3402",r:"paniers",nom:"Corbeille à pain en corde blanche",prix:15,img:"img/vitrine/corbeille-pain",d:"",k:"sella bida khoubz pain corbeille"},
+  {id:"w3415",r:"paniers",nom:"Plateau de service rond inox Lamacom",prix:null,img:"img/vitrine/plateau-inox-rond",d:"",k:"plateau a servir inox circulaire lamacom"},
+  {id:"w3679",r:"paniers",nom:"Sinya en métal sur pieds, grande",prix:180,img:"img/vitrine/sinya-pieds-grande",d:"",k:"sinya m3den pieds grande plateau"},
+  {id:"w3677",r:"paniers",nom:"Sinya en métal sur pieds, moyenne",prix:130,img:"img/vitrine/sinya-pieds-moyenne",d:"",k:"sinya m3den pieds moyen plateau",dc:1},
+  {id:"w3714",r:"electro",nom:"Gaufrier-panini 2 en 1 Lamacom",prix:330,img:"img/vitrine/gaufrier-panini",d:"",k:"panini gaufrier",dc:1},
+  {id:"w3617",r:"electro",nom:"Grill panini Heilbron",prix:190,img:"img/vitrine/grill-panini",d:"",k:"grille panini machine"},
+  {id:"w3592",r:"electro",nom:"Grill électrique Itimat 2000 W",prix:200,img:"img/vitrine/grill-electrique-2000w",d:"",k:"shouwaaya electric grill"},
+  {id:"w3716",r:"electro",nom:"Bouilloire électrique en verre",prix:190,img:"img/vitrine/bouilloire-verre",d:"",k:"bouilloire verres electrique",dc:1},
+  {id:"w49",r:"electro",nom:"Mixeur plongeant KraftLine",prix:115,img:"img/vitrine/mixeur-kraftline",d:"",k:"hand blender kraftline mixeur"},
+  {id:"w3683",r:"electro",nom:"Hachoir Kraft Pro 2 L",prix:160,img:"img/vitrine/hachoir-pro-2l",d:"",k:"hachoir pro 2l"},
+  {id:"w3640",r:"electro",nom:"Hachoir Kraft Pro 3 L",prix:180,img:"img/vitrine/hachoir-kraft-pro-3l",d:"",k:"kraft pro hachoir 3 litre"},
+  {id:"w3538",r:"electro",nom:"Hachoir 2 L",prix:165,img:"img/vitrine/hachoir-2l",d:"",k:"hachoir 2l"},
+  {id:"w3540",r:"electro",nom:"Hachoir 3 L, 3 pièces",prix:180,img:"img/vitrine/hachoir-3l",d:"",k:"hachoir 3l 3 pieces"},
+  {id:"w3725",r:"maison",nom:"Gants de ménage en latex",prix:20,img:"img/vitrine/gants-latex",d:"",k:"gants elastique industriel latex"},
+  {id:"w3722",r:"maison",nom:"Ramassoire",prix:18,d:"",k:"ramassoire pelle"},
+  {id:"w3458",r:"maison",nom:"Mouchoirs Funny 600",prix:10,img:"img/vitrine/mouchoirs-funny",d:"",k:"klinex mouchoirs"},
+  {id:"w63",r:"maison",nom:"Serviette microfibre Far City",prix:10,img:"img/vitrine/serviette-microfibre",d:"",k:"towel serviette"},
+  {id:"w3379",r:"maison",nom:"Brûle-encens (mbikhra)",prix:15,img:"img/vitrine/brule-encens",d:"",k:"mbikhra encens"},
+  {id:"w3684",r:"maison",nom:"Serghina",prix:90,img:"img/vitrine/serghina",d:"",k:"serghina"},
+  {id:"w3619",r:"maison",nom:"Oud Amirat Arab",prix:20,img:"img/vitrine/oud-amirat-arab",d:"",k:"3oud amirat arab parfum oud"},
+  {id:"w3524",r:"maison",nom:"Dattes Al Fajr (tmer)",prix:60,img:"img/vitrine/dattes-al-fajr",d:"",k:"tmer vert dattes"},
+  {id:"w3453",r:"paniers",nom:"Sinya en métal, petite",prix:75,img:"img/vitrine/sinya-metal-petite",d:"",k:"sinya m3den plateau"},
+  {id:"w3454",r:"paniers",nom:"Sinya en métal, moyenne",prix:95,img:"img/vitrine/sinya-metal-moyenne",d:"",k:"sinya m3den plateau"},
+  {id:"w3455",r:"paniers",nom:"Sinya en métal, grande",prix:140,img:"img/vitrine/sinya-metal-grande",d:"",k:"sinya m3den plateau"}];
+const RDESC = {cuisson:"Poêles, casseroles et cocottes pour la cuisine de tous les jours.",the:"Théières, cafetières, thermos et verres à thé.",verres:"Verres, carafes et gourdes pour la table.",vaisselle:"Bols, plats, ferrakas et bonbonnières.",ustensiles:"Les indispensables du tiroir, à petits prix.",rangement:"Bocaux, boîtes et rangements pour une maison en ordre.",epices:"Pour garder épices et huiles au sec et à portée de main.",paniers:"Ranger, présenter, servir.",electro:"Hachoirs, grills, mixeurs et bouilloires.",maison:"Les petits plus de la maison."};
 const PH = "data:image/svg+xml,"+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 100"><rect width="80" height="100" fill="#F7E9DA"/><path d="M40 30l5 12 12 5-12 5-5 12-5-12-12-5 12-5z" fill="none" stroke="#C98A6B" stroke-width="1.5"/></svg>');
-const BUDGETS = [{id:0,t:"Tous les prix"},{id:15,t:"≤ 15 DH"},{id:20,t:"≤ 20 DH"},{id:35,t:"≤ 35 DH"}];
+const BUDGETS = [{id:0,t:"Tous les prix"},{id:20,t:"≤ 20 DH"},{id:50,t:"≤ 50 DH"},{id:100,t:"≤ 100 DH"},{id:200,t:"≤ 200 DH"}];
 const $ = s => document.querySelector(s);
 const norm = s => s.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
 const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -758,8 +890,9 @@ function chips(){
 }
 function list(){
   const q = norm(st.q.trim());
-  let l = visible().filter(p => (!st.r || p.r===st.r) && (!st.b || p.prix<=st.b) && (!q || norm(p.nom+" "+p.k+" "+ray(p.r).nom).includes(q)));
-  if (st.sort==="asc") l.sort((a,b)=>a.prix-b.prix); else if (st.sort==="desc") l.sort((a,b)=>b.prix-a.prix);
+  let l = visible().filter(p => (!st.r || p.r===st.r) && (!st.b || (p.prix!=null && p.prix<=st.b)) && (!q || norm(p.nom+" "+p.k+" "+ray(p.r).nom).includes(q)));
+  const pv = (p,d) => p.prix==null ? d : p.prix;
+  if (st.sort==="asc") l.sort((a,b)=>pv(a,1e9)-pv(b,1e9)); else if (st.sort==="desc") l.sort((a,b)=>pv(b,-1)-pv(a,-1));
   else l.sort((a,b)=>RAYONS.indexOf(ray(a.r))-RAYONS.indexOf(ray(b.r)));
   return l;
 }
@@ -777,13 +910,15 @@ function cardHtml(p,i){
         ? `<span class="v-none" aria-hidden="true"><span>${r.ic}</span>Photo bientôt</span>`
         : `<img src="${thumb(p)}" alt="${esc(p.nom)}${k==="real"?" (photo réelle en boutique)":" (visuel illustratif)"}" width="400" height="500" loading="${i<4?"eager":"lazy"}" decoding="async">`}</button>
       <label class="v-pick"><input type="checkbox" data-pick="${p.id}" ${on?"checked":""}><span class="v-box" aria-hidden="true"></span><span class="v-pick-t">${on?"Choisi":"Choisir"}</span><span class="v-sr"> ${esc(p.nom)}</span></label>
-      ${k==="illu"?'<span class="v-flag">Visuel illustratif</span>':""}
+      ${k==="illu"?'<span class="v-flag">Visuel illustratif</span>':""}${p.dc?'<span class="v-flag v-dc">Dispo à confirmer</span>':""}
     </div>
     <div class="v-bd"><h3>${esc(p.nom)}</h3>
-      <p class="v-line"><span class="v-price">${p.prix}<small>&nbsp;DH</small></span><span class="v-dots" aria-hidden="true"></span><span class="v-kind">${k==="real"?"Photo réelle":k==="illu"?"Illustration":"Sans photo"}</span></p>
+      <p class="v-line">${p.prix==null?`<span class="v-price v-ask">Prix sur demande</span>`:`<span class="v-price">${p.prix}<small>&nbsp;DH</small></span>`}<span class="v-dots" aria-hidden="true"></span><span class="v-kind">${k==="real"?"Photo réelle":k==="illu"?"Illustration":"Sans photo"}</span></p>
       <div class="v-act" id="act-${p.id}">${actHtml(p)}</div></div></article>`;
 }
+const MAXR = 8;
 function render(){
+  const eb = document.querySelector("#vitrine .v-eyebrow, .v-eyebrow"); if (eb) eb.textContent = `Le catalogue · ${P.length} articles`;
   chips();
   const l = list(), grouped = st.sort==="rayon" && !st.r && !st.b && !st.q.trim();
   const picked = Object.keys(cart).length;
@@ -794,16 +929,16 @@ function render(){
     let i = 0;
     $("#grid").innerHTML = RAYONS.map((r,ri) => { const items = l.filter(p=>p.r===r.id); if (!items.length) return "";
       return `<section class="v-rayon" aria-labelledby="rh-${r.id}"><header class="v-rhead" style="--c:${r.c}"><span class="v-num">${String(ri+1).padStart(2,"0")}</span><div><h3 id="rh-${r.id}"><span aria-hidden="true">${r.ic}</span> ${r.nom}</h3><p>${RDESC[r.id]}</p></div><span class="v-count">${items.length} article${items.length>1?"s":""}</span></header>
-        <div class="v-cards">${items.map(p=>cardHtml(p,i++)).join("")}</div></section>` }).join("");
+        <div class="v-cards">${items.slice(0,MAXR).map(p=>cardHtml(p,i++)).join("")}</div>${items.length>MAXR?`<button class="v-btn v-ghost v-more" data-r="${r.id}" type="button">Voir les ${items.length} articles · ${r.nom} →</button>`:""}</section>` }).join("");
   } else $("#grid").innerHTML = `<div class="v-cards">${l.map(cardHtml).join("")}</div>`;
 }
-function total(){ return Object.entries(cart).reduce((s,[id,n]) => { const p = P.find(x=>x.id===id); return p && s+p.prix*n },0) }
+function total(){ return Object.entries(cart).reduce((s,[id,n]) => { const p = P.find(x=>x.id===id); return p ? s+(p.prix||0)*n : s },0) }
 function lines(){ return Object.entries(cart).map(([id,n]) => ({p:P.find(x=>x.id===id),n})).filter(x => x.p && x.n>0) }
 function message(){
   const ls = lines(); if (!ls.length) return "Bonjour Tifawin Temara, je voudrais des informations sur vos articles.";
   const nom = ($("#fNom")?.value||localStorage.getItem("tifawin-nom")||"").trim(), qu = ($("#fQuartier")?.value||localStorage.getItem("tifawin-quartier")||"").trim();
-  return "Salam Tifawin Temara 👋\nJe voudrais commander :\n" + ls.map(({p,n}) => `• ${n} × ${p.nom} (${p.prix} DH) = ${p.prix*n} DH`).join("\n") +
-    `\nTotal : ${total()} DH` + (nom?`\nPrénom : ${nom}`:"") + (qu?`\nQuartier : ${qu}`:"") + "\nMerci !";
+  return "Salam Tifawin Temara 👋\nJe voudrais commander :\n" + ls.map(({p,n}) => p.prix==null ? `• ${n} × ${p.nom} (prix à me confirmer)` : `• ${n} × ${p.nom} (${p.prix} DH) = ${p.prix*n} DH`).join("\n") +
+    `\nTotal : ${total()} DH` + (ls.some(x=>x.p.prix==null)?" (hors articles à prix sur demande)":"") + (nom?`\nPrénom : ${nom}`:"") + (qu?`\nQuartier : ${qu}`:"") + "\nMerci !";
 }
 const waUrl = t => "https://wa.me/"+WA+"?text="+encodeURIComponent(t);
 function syncBar(bump){
@@ -840,12 +975,12 @@ function openSheet(id){
     <span class="v-hintz" aria-hidden="true">Touchez pour zoomer</span>
     ${both?`<div class="v-views" role="group" aria-label="Type de photo"><button aria-pressed="true" data-view="${big(p)}">Photo réelle</button><button aria-pressed="false" data-view="${p.visuel}">Visuel</button></div>`:""}</div>
    <div class="v-sbody"><span class="v-ray">${r.ic} ${r.nom}</span>
-    <h2 id="sTitle">${esc(p.nom)}</h2><div class="v-pr">${p.prix}<small>&nbsp;DH</small></div>
+    <h2 id="sTitle">${esc(p.nom)}</h2><div class="v-pr">${p.prix==null?`<span class="v-ask">Prix sur demande</span>`:`${p.prix}<small>&nbsp;DH</small>`}</div>
     ${p.d?`<p>${esc(p.d)}</p>`:""}
-    <p class="v-note">${p.img?"Photo prise en boutique à Témara.":p.visuel?"Visuel illustratif : demandez-nous la photo réelle sur WhatsApp.":"Photo bientôt disponible : demandez-la-nous sur WhatsApp."} Disponibilité confirmée sur WhatsApp.</p>
+    <p class="v-note">${p.img?"Photo prise en boutique à Témara.":p.visuel?"Visuel illustratif : demandez-nous la photo réelle sur WhatsApp.":"Photo bientôt disponible : demandez-la-nous sur WhatsApp."} ${p.dc?"Article actuellement en réassort : nous confirmons la disponibilité sur WhatsApp.":"Disponibilité confirmée sur WhatsApp."}${p.prix==null?" Prix confirmé par message.":""}</p>
     <label class="v-pick v-pick-sheet"><input type="checkbox" data-pick="${p.id}" ${cart[p.id]?"checked":""}><span class="v-box" aria-hidden="true"></span><span class="v-pick-t">${cart[p.id]?"Choisi":"Choisir"}</span><span class="v-sr"> ${esc(p.nom)}</span></label>
     <div class="v-row"><div id="sQty" style="flex:0 0 160px">${actHtml(p)}</div>
-     <a class="v-btn v-wa" target="_blank" rel="noopener noreferrer" href="${waUrl(`Salam Tifawin Temara 👋\nJe voudrais commander : ${p.nom} (${p.prix} DH).\nMerci !`)}">Commander juste celui-ci</a></div>
+     <a class="v-btn v-wa" target="_blank" rel="noopener noreferrer" href="${waUrl(p.prix==null?`Salam Tifawin Temara 👋\nJe voudrais connaître le prix et la disponibilité de : ${p.nom}.\nMerci !`:`Salam Tifawin Temara 👋\nJe voudrais commander : ${p.nom} (${p.prix} DH).\nMerci !`)}">${p.prix==null?"Demander le prix":"Commander juste celui-ci"}</a></div>
    </div>`;
   $("#sheetDlg").showModal();
 }
@@ -855,7 +990,7 @@ function drawCart(){
   $("#cart").innerHTML = `<button class="v-btn v-ghost" data-close style="float:right;min-height:40px;padding:.4rem .9rem">Fermer</button>
    <h2 id="cTitle">Votre siniya</h2><p class="v-note" style="margin:0">${c?`${c} article${c>1?"s":""} prêts à être commandés.`:"Votre panier est vide."}</p>
    <div class="v-siniya" aria-hidden="true">${pos.map((p,i) => { const a = (i/Math.max(pos.length,1))*2*Math.PI - Math.PI/2, rr = pos.length>1?30:0; return `<img src="${thumb(p)}" alt="" style="left:${50+rr*Math.cos(a)}%;top:${50+rr*Math.sin(a)}%;animation-delay:${i*50}ms">` }).join("")}<span class="v-mid">${c?dh(total()):"تيفاوين"}</span></div>
-   <ul class="v-lines">${ls.map(({p,n}) => `<li><img src="${thumb(p)}" alt=""><div><div class="v-nm">${esc(p.nom)}</div><div class="v-sub">${p.prix} DH × ${n} = <b>${p.prix*n} DH</b></div></div>
+   <ul class="v-lines">${ls.map(({p,n}) => `<li><img src="${thumb(p)}" alt=""><div><div class="v-nm">${esc(p.nom)}</div><div class="v-sub">${p.prix==null?`Prix sur demande × ${n}`:`${p.prix} DH × ${n} = <b>${p.prix*n} DH</b>`}</div></div>
      <div class="v-step" role="group" aria-label="Quantité ${esc(p.nom)}"><button data-dec="${p.id}" aria-label="Retirer un">−</button><output>${n}</output><button data-inc="${p.id}" aria-label="Ajouter un">+</button></div></li>`).join("")}</ul>
    ${c?`<div class="v-total"><span>Total</span><span>${dh(total())}</span></div>
    <div class="v-fields"><label for="fNom">Prénom (facultatif)</label><input id="fNom" autocomplete="given-name" value="${esc(localStorage.getItem("tifawin-nom")||"")}">
@@ -870,7 +1005,7 @@ function updMsg(){ const m = $("#msg"); if (!m) return; const t = message(); m.t
 
 document.addEventListener("click", e => {
   const t = e.target.closest("button,a"); if (!t) return;
-  if (t.dataset.r !== undefined) { st.r = t.dataset.r; render() }
+  if (t.dataset.r !== undefined) { st.r = t.dataset.r; render(); if (t.classList.contains("v-more")) document.getElementById("status").scrollIntoView({behavior: reduce?"auto":"smooth", block:"start"}) }
   else if (t.dataset.b !== undefined) { st.b = +t.dataset.b; render() }
   else if (t.dataset.inc) setQty(t.dataset.inc, 1, t);
   else if (t.dataset.dec) setQty(t.dataset.dec, -1);
